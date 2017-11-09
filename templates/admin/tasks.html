@@ -1,0 +1,108 @@
+<article>
+	<div class='grid'>
+		<div class='row'>
+			<div class='col col_2'>{% include "admin/sidemenu.html" %}</div>
+			<div class='col col_10'>
+				<h1><i class="icon-ok"></i> {{Title|raw}}: {{SubPage|raw}}</h1>
+				{{ Content|raw }}
+				<div class='grid'>
+					<div class='row'>
+						<div class="col col_2">
+							<h6>Menu</h6>
+							<form method="POST" id="filterTask">
+								<input type="text" placeholder="Filter Tasks" size="20" class="brd">
+								<button class="bld">Go</button>
+							</form>
+							<br />
+							<h5>Add Task</h5>
+							<form method="POST" id="newTask" class="add-task">
+								<label for="name" class="label">Name</label>
+								<input type="text" name="name" placeholder="Task Name" size="23">
+								<label for="parent" class="labelselect">Parent</label>
+								<select name="parent">
+									{{Optlist|raw}}
+								</select>
+								<label for="status" class="label0">Status</label>
+								<div>
+									<section id="status" class="section">
+										<div class="cradio">
+											<input type="radio" name="status" id="radio-1" value="-10" checked>
+											<label for="radio-1"><span class="radio">Planning</span></label>
+										</div>
+										<div class="cradio">
+											<input type="radio" name="status" id="radio-2" value="-10">
+											<label for="radio-2"><span class="radio">Fixing</span></label>
+										</div>
+										<div class="cradio">
+											<input type="radio" name="status" id="radio-3" value="10">
+											<label for="radio-3"><span class="radio">Started</span></label>
+										</div>
+										<div class="cradio">
+											<input type="radio" name="status" id="radio-7" value="25">
+											<label for="radio-7"><span class="radio">Coffee... (25%)</span></label>
+										</div>
+										<div class="cradio">
+											<input type="radio" name="status" id="radio-4" value="50">
+											<label for="radio-4"><span class="radio">Halfway there(50%)</span></label>
+										</div>
+										<div class="cradio">
+											<input type="radio" name="status" id="radio-5" value="75">
+											<label for="radio-5"><span class="radio">Polishing Up (75%)</span></label>
+										</div>
+										<div class="cradio">
+											<input type="radio" name="status" id="radio-6" value="100">
+											<label for="radio-6"><span class="radio">Completed (100%)</span></label>
+										</div>
+									</section>
+								</div>
+								<label for="description"  class="label">Description</label>
+								<textarea name="description" placeholder="Description" cols="29"></textarea>
+								<button type="submit" form="newTask" value="Submit" name="AddTask" class="small">Add Task</button>
+							</form>
+						</div>
+						<div class="col col_10">
+							{{Content}}
+							<div class='grid'>
+								{% for task in TaskM %}
+								<div class='row'>
+									<div class='col col_2'>
+										<i class='icon-tasks'></i>{{task.Name}}
+									</div>
+									<div class='col col_10'></div>
+								</div>
+								<div class='row'>
+									<div class='col_12 prog-bar'>
+										<div class='bar{{task.Class}}' style='width:{{task.Status}}%;'><span class='prog-bar-label'>{{task.Label}}</span></div>
+									</div>
+								</div>
+								<div class='row'>
+									<div class='col col_1'></div>
+									<div class='col col_11'>
+										{{task.Description}}
+									</div>
+								</div>
+								{% for child in TaskS %}
+								{% if child.Parent == task.ID %}
+								<div class='row'>
+									<div class='col col_1'></div>
+									<div class='col col_11'>{{child.Name}}</div>
+								</div>
+								<div class='row'>
+									<div class='col col_1'></div>
+									<div class='col_11 prog-bar'>
+										<div class='bar{{child.Class}}' style='width:{{child.Status}}%;'><span class='prog-bar-label'>{{child.Label}}</span></div>
+									</div>
+								</div>
+								{% endif %}
+								{% endfor %}
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</article>
+
+<script type="text/javascript" src="assets/js/modal.js"></script>

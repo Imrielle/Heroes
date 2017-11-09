@@ -1,0 +1,31 @@
+	<ul class='tabs'>
+		<li class="tab-link current" data-tab="settings"><i class='icon-user'></i> Dashboard</li>
+		<li class="tab-link" data-tab="main"><i class='icon-cog'></i> Settings</li>
+		<li class="tab-link" data-tab="logout"><i class='icon-cancel'></i> Logout</li>
+	</ul>
+
+	<div id='main' class='tab-content'>Welcome {{UserName}}</div>
+	<div id='settings' class='tab-content current'>
+		<form method='post'>
+			<div class='row'>
+				<div class='col_12 center'><h5>Basics</h5></div>
+				<div class='col_2'>Nickname</div><div class='col_10'><input type='text' name='txt_unick' value='{{UserNickD}}' /></div>
+				<div class='col_2'>Email</div><div class='col_10'><input type='text' name='txt_uname_email' value='{{UserEmail}}' /></div>
+				<div class='col_12 center'>Forums</div>
+				<div class='col_2'>Avatar</div><div class='col_10'><input type='text' name='txt_uavatar' value='{{UserAvatar}}' /></div>
+				<div class='col_2'>Signature</div><div class='col_10'><textarea style='width: 75%;' name='txt_usig'>{{UserSignature}}</textarea></div>
+				<div class='col_12'>Details</div>
+				<div class='col_2'>Website</div><div class='col_10'><input type='text' name='txt_uwebsite' value='{{UserWebpage}}' /></div>
+				<div class='col_2'>Steam</div><div class='col_10'><input type='text' name='txt_usteam' value='{{UserSteam}}' /></div>
+				<div class='col_2'>Discord</div><div class='col_10'><input type='text' name='txt_udiscord' value='{{UserDiscord}}' /></div>
+				<div class='col_2'>Facebook</div><div class='col_10'><input type='text' name='txt_ufacebook' value='{{UserFacebook}}' /></div>
+				<div class='col_12 center'>Details</div>
+				<div class='col_2'>New Password</div><div class='col_10'><input type='password' name='txt_password_new' /></div>
+				<div class='col_2'>Current Password*</div><div class='col_10'><input type='password' name='txt_password' required /></div>
+				<div class='col_12 center'><input type='submit' value='Update'></div>
+			</div>
+		</form>
+	</div>
+	<div id='logout' class='tab-content'>
+		<a href='index.php?p=Users&sp=Logout'><i class='icon-cancel'></i> Logout?</a>
+	</div>

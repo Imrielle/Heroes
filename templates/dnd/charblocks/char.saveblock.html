@@ -1,0 +1,14 @@
+<div id="saves">
+    <h6>Saving Throws</h6>
+    <ul>
+        {% for Stat in Stats %}
+        <li>
+            <label class="control control--checkbox">{{Stat.SName}}
+                <input name="{{Stat.SName}}-save-prof" type="checkbox" />
+                <div class="control__indicator"></div>
+            </label>
+            <input name="{{Stat.SName}}-modifier" type="text" value="-1" disabled />
+        </li>
+        {% endfor %}
+    </ul>
+</div>

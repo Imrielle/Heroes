@@ -1,0 +1,25 @@
+<div id="charbasics">
+    <div class="row">
+        <div class="col_3">
+            {% include "dnd/charblocks/char.name.html" %}
+        </div>
+        <div class="col_9">
+            {% include "dnd/charblocks/char.details.html" %}
+        </div>
+    </div>
+    <div class="row" id="charstats">
+        <div class="col_2">
+            {% include "dnd/charblocks/char.statblock.html" %}
+        </div>
+        <div class="col_3">
+            {% include "dnd/charblocks/char.saveblock.html" %}
+            {% include "dnd/charblocks/char.skillblock.html" %}
+        </div>
+        <div class="col_7">
+            {% include "dnd/charblocks/char.traits.html" %}
+            {% include "dnd/charblocks/char.ideals.html" %}
+            {% include "dnd/charblocks/char.bonds.html" %}
+            {% include "dnd/charblocks/char.flaws.html" %}
+        </div>
+    </div>
+</div>

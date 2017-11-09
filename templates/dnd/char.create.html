@@ -1,0 +1,27 @@
+<div class="row">
+	<div class="col_12">
+        <ul class='tabs'>
+            <li class="tab-link current" data-tab="main">Basics</li>
+            <li class="tab-link" data-tab="equipment">Equipment</li>
+            <li class="tab-link" data-tab="description">Description</li>
+            <li class="tab-link" data-tab="summary">Summary</li>
+        </ul>
+        <form id="createCharacter" method="POST" target="_self">
+		<div id='main' class='tab-content current'>
+			<h4>Basics</h4>
+			{% include "dnd/create.basics.html" %}
+		</div>
+        <div id='equipment' class='tab-content'>
+			<h4>Equipment</h4>
+            {% include "dnd/create.equip.html" %}
+		</div>
+         <div id='description' class='tab-content'>
+			<h4>Background Details</h4>
+		</div>
+        <div id='summary' class='tab-content'>
+			<h4>Background Details</h4>
+			<button type="submit" name="AddChar">Finish</button>
+		</div>
+        </form>
+    </div>
+</div>

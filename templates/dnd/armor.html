@@ -1,0 +1,26 @@
+{{Content}}
+<div class="row">
+    <div class="col_2"><h6>Name</h6></div>
+    <div class="col_1"><h6>Type</h6></div>
+    <div class="col_1"><h6>AC</h6></div>
+    <div class="col_1"><h6>Dex (Max)</h6></div>
+    <div class="col_1"><h6>Str</h6></div>
+    <div class="col_1"><h6>Stealth</h6></div>
+    <div class="col_1"><h6>Value</h6></div>
+    <div class="col_1"><h6>Weight</h6></div>
+    <div class="col_1"><h6>Material</h6></div>
+</div>
+{% for Armor in Armor %}
+    <div id="{{Armor.Name}}" class="row">
+        <div class="col_2"><h6>{{Armor.Name}}</h6></div>
+        <div class="col_1">{{Armor.Type}}</div>
+        <div class="col_1">{{Armor.AC}} AC</div>
+        <div class="col_1">{{Armor.DexA}}{% if Armor.DexA == 'Y' %} +{{Armor.DexM}}{% endif %}</div>
+        
+        <div class="col_1">{{Armor.StrR}}</div>
+        <div class="col_1">{{Armor.Stealth}}</div>
+        <div class="col_1">{{Armor.Value}} GP</div>
+        <div class="col_1">{{Armor.Weight}} lb</div>
+        <div class="col_1">{{Armor.Material}}</div>
+    </div>
+{% endfor %}

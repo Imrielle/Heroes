@@ -1,0 +1,12 @@
+<div class="row">
+    <h5>Bonds: Choose Two</h5>
+    <div class="col_12">
+        {% for Bnd in Bonds %}
+        <div visibly="Background:{{Bnd.bg_id}}">
+            <label class="control control--checkbox"><input type="checkbox" name="bond[]" value="{{Bnd.ID}}">{{Bnd.bond_desc}}
+                <div class="control__indicator"></div>
+            </label>
+        </div>
+        {% endfor %}
+    </div>
+</div>

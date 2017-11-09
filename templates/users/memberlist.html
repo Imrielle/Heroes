@@ -1,0 +1,12 @@
+	<div class="row">
+		<div class="col_3 th">User</div>
+		<div class="col_3 th">Rank</div>
+		<div class="col_3 th">Registered</div>
+	</div>
+	{loop="UserList"}
+	<div class="row">
+		<div class="col_3"><a href="index.php?p=Users&sp=User&u={$value.UserName}">{$value.UserName}</a></div>
+		<div class="col_3">{if="$value.UserLevel == 9"}Admin{elseif="$value.UserLevel == 5"}Something{else}Registered{/if}</div>
+		<div class="col_3">{$value.RegDate}</div>
+	</div>
+	{/loop}

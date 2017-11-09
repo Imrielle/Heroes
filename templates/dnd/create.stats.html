@@ -1,0 +1,49 @@
+<div class="row">
+	<div class="col col_1"><h6>Race</h6></div>
+	<div class="col col_5">
+		
+	</div>
+	<div id="total-points-field">
+		<div class="col_1"><h6>Points:</h6></div>
+		<div class="col_1 pointsToSpend"></div>
+        <div class="col_1 pointsToSpend"></div>
+		<div class="col_1 pointsMax"></div>
+	</div>
+</div>
+<div id="raceinfo"></div>
+<div class="row">
+	<div class='row'>
+		<div class="col_1">Stat</div>
+		<div class="col_4"></div>
+		<div class="col_1">Mod</div>
+		<div class="col_1">Cost</div>
+        <div class="col_1">Racial</div>
+		<div class="col_1">Total</div>
+	</div>
+    <div id="point-buy-table" class="character-creation">
+        {% for Stat in Stats %}
+            <div class="row stats {{Stat.SName}}">
+                <div class="col_1"><h6>{{Stat.SName}}</h6></div>
+                <div class="col_4">
+                    <input type='button' value='-' class='qtyminus' field='{{Stat.SName}}' />
+                    <input type='text' id='{{Stat.SName}}' name='{{Stat.SName}}' value='8' class='qty' disabled />
+                    <input type='button' value='+' class='qtyplus' field='{{Stat.SName}}' />
+                </div>
+                <div class="col_1"><input type='text' name='{{Stat.SName}}-modifier' value='-1' disabled /></div>
+                <div class="col_1"><input type='text' name='{{Stat.SName}}-cost' value='0' disabled /></div>
+                <div class="col_1"><input type='text' id='{{Stat.SName}}-racial' name='{{Stat.SName}}-racial' value='1' disabled /></div>
+                <div class="col_1"><input type='text' id='{{Stat.SName}}-total' name='{{Stat.SName}}-total' value='9' readonly /></div>
+            </div>
+        {% endfor %}
+            <div class="row">
+                <div class="col_12"visibly="race-field:Aetherborn,Human_Revenant,Human_Variant,HalfElf,HalfElf_Aquatic,HalfElf_Drow,HalfElf_MoonSun,HalfElf_Wood,Minotaur_Krynn">Choose Two:</div>
+                <div class="col_2" visibly="race-field:Aetherborn,Human_Revenant,Human_Variant,HalfElf,HalfElf_Aquatic,HalfElf_Drow,HalfElf_MoonSun,HalfElf_Wood,Minotaur_Krynn">
+                    <input type="checkbox" id="Str-Checked" name="stat-choice" value="STR" class="choose">STR</div>
+                <div class="col_2"visibly="race-field:Aetherborn,Human_Revenant,Human_Variant,HalfElf,HalfElf_Aquatic,HalfElf_Drow,HalfElf_MoonSun,HalfElf_Wood"><input type="checkbox" id="Dex-Checked" name="stat-choice" value="DEX" class="choose">DEX</div>
+                <div class="col_2"visibly="race-field:Aetherborn,Human_Revenant,Human_Variant,HalfElf,HalfElf_Aquatic,HalfElf_Drow,HalfElf_MoonSun,HalfElf_Wood"><input type="checkbox" id="Con-Checked" name="stat-choice" value="CON" class="choose">CON</div>
+                <div class="col_2"visibly="race-field:Aetherborn,Human_Revenant,Human_Variant,HalfElf,HalfElf_Aquatic,HalfElf_Drow,HalfElf_MoonSun,HalfElf_Wood,Minotaur_Krynn"><input type="checkbox" name="stat-choice" id="Int-Checked" value="INT" class="choose">INT</div>
+                <div class="col_2"visibly="race-field:Aetherborn,Human_Revenant,Human_Variant,HalfElf,HalfElf_Aquatic,HalfElf_Drow,HalfElf_MoonSun,HalfElf_Wood,Minotaur_Krynn"><input type="checkbox" name="stat-choice" id="Wis-Checked" value="WIS" class="choose">WIS</div>
+                <div class="col_2"visibly="race-field:Human_Variant,Human_Revenant"><input type="checkbox" id="Cha-Checked" name="stat-choice" value="CHA" class="choose">CHA</div>
+            </div>
+    </div>
+</div>

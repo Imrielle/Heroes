@@ -1,0 +1,55 @@
+<article>
+	<div class='grid'>
+		<div class='row'>
+			<div class='col col_2'>{% include "admin/sidemenu.html" %}</div>
+			<div class='col col_10'>
+				<h1><i class="icon-brush"></i> {{Title}}: {{SubPage}}</h1>
+				<h3>Add Theme</h3>
+				{{Notice|raw}}
+				<div class='row'>
+					<div class='col col_2 th'>Name</div>
+					<div class='col col_1 th'>Main Color</div>
+					<div class='col col_1 th'>Accent Color</div>
+					<div class='col col_1 th'>Font Color</div>
+					<div class='col col_1 th'>Link Color</div>
+					<div class='col col_1 th'>Background</div>
+					<div class='col col_4 th'></div>
+				</div>
+				<div class='row'>
+					<form method='POST' id='AddTheme'>
+						<div class='col col_2 td'><input type='text' name='Name' placeholder='Name' size='25' required></div>
+						<div class='col col_1 td'><input type="text" name="Medium" class="jscolor" data-jscolor="{{JSC|raw}}" value="{{MainC}}" maxlength="7"></div>
+						<div class='col col_1 td'><input type="text" name="Accents" class="jscolor" data-jscolor="{{JSC|raw}}" value="{{AC}}" maxlength="7"></div>
+						<div class='col col_1 td'><input type="text" name="Font" class="jscolor" data-jscolor="{{JSC|raw}}" value="{{FontC}}" maxlength="7"></div>
+						<div class='col col_1 td'><input type="text" name="Links" class="jscolor" data-jscolor="{{JSC|raw}}" value="{{LinkC}}" maxlength="7"></div>
+						<div class='col col_1 td'><input type="text" name="BG" class="jscolor" data-jscolor="{{JSC|raw}}" value="{{BGC}}" maxlength="7"></div>
+						<div class='col col_4 td'><button type='submit' form='AddTheme' name='AddTheme'>Add Theme</button></div>
+					</form>
+				</div>
+				{% for theme in ThemeList %}
+				<form method='POST' name='editTheme' id='editTheme-{{theme.ID}}'>
+					<input type='hidden' name='ID' value='{{theme.ID}}' /><input type='hidden' name='Name' value='{{theme.Name}}' />
+					<div class='row' style='background-color: {{theme.BG}}; color: {{theme.Font}};'>
+						<div class='col col_2'>{{theme.Name}}</div>
+						<div class='col col_1'><input type="text" name="Medium" class="jscolor" data-jscolor="{{JSC|raw}}" value="{{theme.Medium}}" maxlength="7"></div>
+						<div class='col col_1'><input type="text" name="Accents" class="jscolor" data-jscolor="{{JSC|raw}}" value="{{theme.Accents}}" maxlength="7"></div>
+						<div class='col col_1'><input type="text" name="Font" class="jscolor" data-jscolor="{{JSC|raw}}" value="{{theme.Font}}" maxlength="7"></div>
+						<div class='col col_1'><input type="text" name="Link" class="jscolor" data-jscolor="{{JSC|raw}}" value="{{theme.Links}}" maxlength="7"></div>
+						<div class='col col_1'><input type="text" name="BG" class="jscolor" data-jscolor="{{JSC|raw}}" value="{{theme.BG}}" maxlength="7"></div>
+						<div class='col col_1'><input type='submit' name='EditTheme' class='small' value='Edit'></form></div>
+						<div class='col col_3'><form method='POST' name='DeleteTheme' id='deleteTheme-{{theme.ID}}'>
+								<input type='hidden' name='ID' value='{{theme.ID}}' />
+								<input type='hidden' name='Name' value='{{theme.Name}}' />
+								<input type='submit' name='DeleteTheme' value='Delete'></form>
+						</div>
+					</div>
+
+					{% endfor %}
+					{{ Content|raw }}
+
+			</div>
+		</div>
+	</div>
+</article>
+
+<script type="text/javascript" src="assets/js/jscolor.js"></script>

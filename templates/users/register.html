@@ -1,0 +1,28 @@
+<article>
+	<form method="post">
+			<div class='row'>
+				<div class='col_4'></div>
+				<div class='col_4'>
+					<h1>{{Title}}: {{SubPage}}</h1>
+					{{Error|raw}}
+					<div class='row'>
+						<label for="txt_uname" class="col_2">Username</label>
+						<input type="text" name="txt_uname" placeholder="Enter Username" value="{{RegUserN}}" />
+					</div>
+					<div class='row'>
+						<label for="txt_email" class="col_2">Email</label>
+						<input type="text" name="txt_umail" placeholder="Enter E-Mail ID" value="{{RegUserEm}}" />
+					</div>
+					<div class='row'>
+						<label for="txt_upass" class="col_2">Password</label>
+						<input type="password" autocomplete="new-password" name="txt_upass" placeholder="Enter Password" />
+					</div>
+					<div class='row'>
+						<input type="submit" name="btn-signup" class='register' value='Sign Up'>
+						or <a class="button" href="index.php?p=Users">Sign In</a>
+					</div>
+				</div>
+				<div class='col_4'></div>
+			</div>
+	</form>
+</article>

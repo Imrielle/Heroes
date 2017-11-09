@@ -1,0 +1,10 @@
+<div id="point-buy-table">
+    <h6>Stats</h6>
+    <ul>
+        {% for Stat in Char.Stats %}
+        <li>{{Stat.Name}}</li>
+        <li><input type='text' id='{{Stat.SName}}' name='{{Stat.SName}}' value='{{Stat.Value}}' disabled /></li>
+        <li><input type="text" name="{{Stat.SName}}-modifier" value="{{Stat.Mod}}" readonly /></li>
+        {% endfor %}
+    </ul>
+</div>

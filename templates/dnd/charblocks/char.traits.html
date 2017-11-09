@@ -1,0 +1,12 @@
+<div class="row">
+    <h5>Traits: Choose Two</h5>
+    <div class="col_12">
+        {% for Trt in Traits %}
+        <div visibly="Background:{{Trt.bg_id}}">
+            <label class="control control--checkbox"><input type="checkbox" name="trait[]" value="{{Trt.ID}}">{{Trt.trait_desc}}
+                <div class="control__indicator"></div>
+            </label>
+        </div>
+        {% endfor %}
+    </div>
+</div>

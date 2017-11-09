@@ -1,0 +1,20 @@
+<div id="SkillList">
+    <h6>Skills</h6>
+    <ul>
+        {% for Skill in Skills %}
+        <li>
+            <label class="control control--checkbox">{{Skill.Name}} ({{Skill.AbilScore}})
+                <input name="{{Skill.Name}}-save-prof" type="checkbox" {% if Skill.ID == 7 or Skill.ID == 15 %}checked{% endif %}  } />
+                <div class="control__indicator"></div>
+            </label>
+            <input name="{{Skill.AbilScore}}-modifier" type="text" value="{% if Skill.AbilScore == 'Str' %}{{Char.Stats['Str']['Mod']}}
+            {% elseif Skill.AbilScore == 'Dex' %}{{Char.Stats['Dex']['Mod']}}
+{% elseif Skill.AbilScore == 'Con' %}{{Char.Stats['Con']['Mod']}}
+{% elseif Skill.AbilScore == 'Int' %}{{Char.Stats['Int']['Mod']}}
+{% elseif Skill.AbilScore == 'Wis' %}{{Char.Stats['Wis']['Mod']}}
+{% else %}{{Char.Stats['Cha']['Mod']}}
+            {% endif %}" disabled />
+        </li>
+        {% endfor %}
+    </ul>
+</div>

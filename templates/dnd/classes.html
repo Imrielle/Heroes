@@ -1,0 +1,16 @@
+<h1>{{Page}}{{SubPage}}</h1>
+{{Content}}
+<ol>
+{% for Class in Classes %}
+    <li><a href="#{{Class.Name}}">{{Class.Name}}</a></li>
+{% endfor %}
+</ol>
+
+{% for Class in Classes %}
+    <div id="{{Class.Name}}" class="row">
+        <div class="col_12"><a id="{{Class.Name}}">{{Class.Name}}</a></div>
+        <div class="col_1">Source:</div><div class="col_1">{{Class.Source}}</div>
+        <div class="col_1">HD:</div><div class="col_1">1d{{Class.HD}}</div>
+        <div class="col_1">Stats:</div><div class="col_1">{{Class.PrimeStats}}</div>
+    </div>
+{% endfor %}

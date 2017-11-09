@@ -1,0 +1,12 @@
+<div class="row">
+    <h5>Ideals: Choose One</h5>
+    <div class="col_12">
+        {% for Idl in Ideals %}
+        <div visibly="Background:{{Idl.bg_id}}">
+            <label class="control control--radio"><input type="radio" name="ideal" value="{{Idl.ID}}">{{Idl.ideal_desc}}
+               <div class="control__indicator"></div>
+            </label>
+        </div>
+        {% endfor %}
+    </div>
+</div>

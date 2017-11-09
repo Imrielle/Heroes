@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col_4">
+        <select name="Class" id="Class">
+            {% for Class in Classes %}
+            <option value="{{Class.ID}}">{{Class.Name}}</option>
+            {% endfor %}
+        </select>
+        <label for="Class">Class</label>
+    </div>
+    <div class="col_4">
+        <select id="Background" name="Background">
+            {% for BG in BGs %}
+                <option value="{{BG.ID}}">{{BG.background}}</option>
+            {% endfor %}
+        </select>
+        <label for="background">Background</label>
+    </div>
+    <div class="col_4">
+        <input type="hidden" name="Owner" value="{{UserID}}" readonly>
+        <input type="text" value="{{UserName}}" readonly>
+        <label for="Owner">Player Name</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col_4">
+        <select id="race-field" name="Race">
+            {% for Race in Races %}
+            <option value="{{Race.ID}}"{% if Race.rFullName == 'Human' %} selected{% endif %} >{{Race.rName}}{% if Race.rSubName != "" %} ({{Race.rSubName}}){% endif %}</option>
+            {% endfor %}
+        </select>
+        <label for="Race">Race</label>
+    </div>
+    <div class="col_4">
+        <select name="alignment">
+            <option value="LG">Lawful Good</option>
+            <option value="NG">Neutral Good</option>
+            <option value="CG">Chaotic Good</option>
+            <option value="LN">Lawful Neutral</option>
+            <option  value="NN" selected>True Neutral</option>
+            <option value="LN">Chaotic Neutral</option>
+            <option value="LE">Lawful Evil</option>
+            <option value="NE">Neutral Evil</option>
+            <option value="CE">Chaotic Evil</option>
+        </select>
+        <label for="alignment">Alignment</label>
+    </div>
+    <div class="col_4">
+        <label class="control control--radio">Male
+            <input type="radio" id="gender-male" name="Gender" value="M" checked="checked"/>
+            <div class="control__indicator"></div>
+        </label>
+        <label class="control control--radio">Female
+            <input type="radio" id="gender-female" name="Gender" value="F" />
+            <div class="control__indicator"></div>
+        </label>
+    </div>
+</div>

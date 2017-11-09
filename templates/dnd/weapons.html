@@ -1,0 +1,33 @@
+{{Content}}
+<div class="row">
+    <div class="col_2"><h6>Name</h6></div>
+    <div class="col_1"><h6>Type</h6></div>
+    <div class="col_1"><h6>DMG</h6></div>
+    <div class="col_1"><h6>DMG Type</h6></div>
+    <div class="col_1"><h6>Value</h6></div>
+    <div class="col_1"><h6>Weight</h6></div>
+    <div class="col_1"><h6>Material</h6></div>
+    <div class="col_4"><h6>Properties</h6></div>
+</div>
+{% for Weapon in Weapons %}
+    <div id="{{Weapon.Name}}" class="row">
+        <div class="col_2"><h6>{{Weapon.Name}}</h6></div>
+        <div class="col_1">{{Weapon.Type}}</div>
+        <div class="col_1">{{Weapon.HD}}</div>
+        <div class="col_1">
+            {% if Weapon.DmgType == 'B' %}
+                Blunt
+            {% elseif Weapon.DmgType == 'P' %}
+                Piercing
+            {% elseif Weapon.DmgType == 'S' %}
+                Slashing
+            {% else %}
+                {{Weapon.DmgType}}
+            {% endif %}
+        </div>
+        <div class="col_1">{{Weapon.Value}} GP</div>
+        <div class="col_1">{{Weapon.Weight}} lb</div>
+        <div class="col_1">{{Weapon.Material}}</div>
+        <div class="col_4">{{Weapon.Properties}}</div>
+    </div>
+{% endfor %}

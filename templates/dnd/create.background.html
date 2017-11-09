@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col_2"><h5>Background:</h5></div>
+    <div class="col_10">
+    
+    </div>
+</div>
+<div class="row">
+    <div class="col_2"><h5>Feature:</h5></div>
+    <div class="col_10">
+        {% for Ftr in Features %}
+        <div visibly="Background:{{Ftr.bg_id}}">
+            {{Ftr.feature_name}}
+            <br />{{Ftr.feature_desc|nl2br}}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="row">
+    <div class="col_2"><h5>Bonds:</h5> Choose Two</div>
+    <div class="col_10">
+        {% for Bnd in Bonds %}
+        <div visibly="Background:{{Bnd.bg_id}}">
+            <input type="checkbox" name="bond" value="{{Bnd.ID}}">{{Bnd.bond_desc}}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="row">
+    <div class="col_2"><h5>Flaws:</h5> Choose Two</div>
+    <div class="col_10">
+        {% for Flw in Flaws %}
+        <div visibly="Background:{{Flw.bg_id}}">
+            <input type="checkbox" name="flaw" value="{{Flw.ID}}">{{Flw.flaw_desc}}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="row">
+    <div class="col_2"><h5>Ideals:</h5> Choose One</div>
+    <div class="col_10">
+        {% for Idl in Ideals %}
+        <div visibly="Background:{{Idl.bg_id}}">
+            <input type="radio" name="ideal" value="{{Idl.ID}}">{{Idl.ideal_desc}}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+

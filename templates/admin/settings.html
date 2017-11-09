@@ -1,0 +1,52 @@
+<article>
+	<div class='grid'>
+		<div class='row'>
+			<div class='col col_2'>{% include "admin/sidemenu.html" %}</div>
+			<div class='col col_10'>
+				<div class='grid'>
+					<h1><i class="icon-wrench"></i> {{Title}}: {{SubPage}}</h1>
+					{{ Content|raw }}
+					{{Notice|raw}}
+					<form method="POST" id="update">
+						<div class='row'>
+							<div class='col col_4'>Site Name</div>
+							<div class='col col_8'><input type="text" name="sitename" size="23" value="{{SiteName}}"></div>
+						</div>
+						<div class='row'>
+							<div class='col col_4'>Template</div>
+							<div class='col col_8'>
+								<select name="template">
+									{{TPList|raw}}
+								</select>
+							</div>
+						</div>
+						<div class='row'>
+							<div class='col col_4'>Theme</div>
+							<div class='col col_8'>
+								<select name="theme">
+									{{Themes|raw}}
+								</select>
+							</div>
+						</div>
+						<div class='row'>
+							<div class='col col_4'>Time Zone</div>
+							<div class='col col_8'>
+								<select name="timezone">
+									{% for tz in TZList %}
+									<option value='{{tz.Value}}'{% if tz.Value == 0 %}selected{% endif %}>{{tz.Display}}</option>
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+						<div class='row'>
+							<div class='col col_4'>Articles Per Page</div>
+							<div class='col col_8'><input type="text" name="articles" size="23" value="{{Articles}}"></div>
+						</div>
+						<div class='row'>
+							<div class='col col_12'><button type="submit" form="update" value="Submit" name="update" class="small">Update</button></div>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</article>

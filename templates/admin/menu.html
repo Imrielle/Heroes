@@ -1,0 +1,162 @@
+{{Notice|raw}}
+<p>Here, you can add links to the main menu. A name is required, a file, however, is optional.</p>
+<p>If you are specifying a file for that page to use, its path is relative to the home folder, for example: if you've 
+placed the file in a folder named "data", the file path would be "data/filename.ext".</p>
+<p>Similarly, you can also specify a template file to use. This is useful for when you've created a template just for a page, </p>
+<p>Template files are relative to the template folder that you are using. If you've placed an HTML file in the "default/" folder and named it "filename", simply put "filename" in the field.</p>
+<p>Otherwise, if you've placed "filename" in a "default/dipstick" folder, type in "dipstick/filename".</p>
+<form method="post">
+    <h3>Main Menu</h3>
+    <div class='row'>
+        <div class='col col_2'>Name*</div>
+        <div class='col col_2'>Icon</div>
+        <div class='col col_2'>Template</div>
+        <div class='col col_1'>Access</div>
+        <div class='col col_2'>File</div>
+        <div class='col col_2'></div>
+    </div>
+    <div class='row'>
+        <div class='col col_2'><input name="mn_name" type="text" placeholder="Name" required /></div>
+        <div class='col col_2'>
+            <select name="mn_icon">
+                {% for Icon in IconList %}
+                <option value='{{Icon.Value}}'>{{Icon.Name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class='col col_2'><input name="mn_template" type="text" placeholder="Template" /></div>
+        <div class='col col_1'>
+            <select name="mn_access">
+                {% for acc in AccessArr %}
+				<option value='{{acc.Value}}'>{{acc.Name}}</option>
+				{% endfor %}
+            </select>
+        </div>
+        <div class='col col_2'><input name="mn_file" type="text" placeholder="File" /></div>
+        <div class='col col_1'><button type="submit" name="AddMain">Add</button></div>
+    </div>
+</form>
+<h3>Sub Menu</h3>
+    <div class='row'>
+		<div class='col col_2'>Name*</div>
+        <div class='col col_2'>Parent</div>
+        <div class='col col_2'>Template</div>
+        <div class='col col_1'>Access</div>
+        <div class='col col_2'>File</div>
+        <div class='col col_2'></div>
+	</div>
+	<div class='row'>
+		<form method="post">
+			<div class='col col_2'><input type="text" placeholder="Name" name="s_name" /></div>
+			<div class='col col_2'>
+                <select name="s_parent">
+                    {% for parent in Parents %}
+                    <option value='{{parent.ID}}'>{{parent.Name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class='col col_2'><input type="text" placeholder="Template" name="s_template" /></div>
+            <div class='col col_1'>
+            <select name="s_access">
+                {% for acc in AccessArr %}
+				<option value='{{acc.Value}}'>{{acc.Name}}</option>
+				{% endfor %}
+            </select>
+        </div>
+			<div class='col col_2'><input type="text" placeholder="File" name="s_file" /></div>
+			<div class='col col_1'><button type="submit" name="AddSub">Add</button></div>
+        </form>
+    </div>
+    <h3>Edit Menu Items</h3>
+        <div class="row">
+					<div class='col col_4 th'>Name</div>
+					<div class='col col_2 th'>File</div>
+					<div class='col col_2 th'>Icon</div>
+					<div class='col col_1 th'>Access</div>
+					<div class='col col_2 th'></div>
+				</div>
+				{% for menu in Menu %}
+					{% if menu.Protected == '1' %}
+					{% elseif menu.Children == 0 %}
+						<div class="row">
+							<form method='POST' name='EditMenu' id='EditMenu-{{menu.ID}}'>
+							<input type='hidden' name='ID' value='{{menu.ID}}' />
+							<div class="col col_3"><span class="input">{{menu.Name}}</span></div>
+							<div class='col col_2'><input type="text" name="Name" value="{{menu.Name}}"></div>
+							<div class='col col_2'><input type="text" name="File" value="{{menu.File}}"></div>
+							<div class='col col_2'>
+								<select name="Icon">
+									{% for Icon in IconList %}
+									<option value='{{Icon.Value}}'{% if menu.Icon == Icon.Value %}selected{% else %}{% endif %}>{{Icon.Name}}</option>
+									{% endfor %}
+								</select>
+							</div>
+							<div class='col col_1'>
+								<select name="Access">
+									{% for acc in AccessArr %}
+										<option value='{{acc.Value}}'>{{acc.Name}}</option>
+									{% endfor %}
+								</select>
+							</div>
+							<div class='col col_1'><input type='submit' name='EditMenu' class='edit' value='&#xe828; Edit'></form></div>
+							<div class='col col_1'>
+								<form method='POST' name='DeleteMenu' id='deleteMenu-{{menu.ID}}'>
+								<input type='hidden' name='ID' value='{{menu.ID}}' />
+								<input type='hidden' name='Parent' value='0' />
+								<input type='hidden' name='Name' value='{{menu.Name}}' />
+								<input type='submit' name='DeleteMenu' class='delete' value='&#xf1f8; Delete'></form>
+							</div>
+						</div>
+					{% else %}
+						<div class="row">
+							<form method='POST' name='EditMenu' id='EditMenu-{{menu.ID}}'>
+							<input type='hidden' name='ID' value='{{menu.ID}}' />
+							<div class="col col_2"><span class="input">{{menu.Name}}</span></div>
+							<div class='col col_2'><input type="text" name="Name" value="{{menu.Name}}"></div>
+							<div class='col col_2'><input type="text" name="File" value="{{menu.File}}"></div>
+							<div class='col col_2'>
+								<select name="Icon">
+								{% for Icon in IconList %}
+									<option value='{{Icon.Value}}'{% if menu.Icon == Icon.Value %}selected{% else %}{% endif %}>{{Icon.Name}}</option>
+								{% endfor %}
+								</select>
+							</div>
+							<div class='col col_1'>
+								<select name="Access">
+									{% for acc in AccessArr %}
+										<option value='{{acc.Value}}'>{{acc.Name}}</option>
+									{% endfor %}
+								</select>
+							</div>
+							<div class='col col_1'><input type='submit' name='EditMenu' class='edit' value='&#xe828; Edit'></form></div>
+							<div class='col col_1'>
+								<form method='POST' name='DeleteMenu' id='deleteMenu-{{menu.ID}}'>
+								<input type='hidden' name='ID' value='{{menu.ID}}' />
+								<input type='hidden' name='Parent' value='1' />
+								<input type='hidden' name='Name' value='{{menu.Name}}' />
+								<input type='submit' name='DeleteMenu' class='delete' value='&#xf1f8; Delete'></form>
+							</div>
+						</div>
+						{% for submenu in SubMenu %}
+							{% if submenu.Parent == menu.ID %}
+							<div class="row">
+								<form method='POST' name='EditMenu' id='EditMenu-{{submenu.ID}}'>
+								<input type='hidden' name='ID' value='{{menu.ID}}' />
+                                <div class="col col_2"><i class="icon-level-down"></i>{{submenu.Name}}</div>
+								<div class='col col_2'><input type="text" name="Name" value="{{submenu.Name}}"></div>
+								<div class='col col_2'><input type="text" name="File" value="{{submenu.File}}"></div>
+								<div class='col col_3'>&nbsp;</div>
+								<div class='col col_1'><input type='submit' name='EditMenu' class='edit' value='&#xe828; Edit'></form></div>
+								<div class='col col_1'>
+									<form method='POST' name='DeleteMenu' id='deleteMenu-{{submenu.ID}}'>
+									<input type='hidden' name='ID' value='{{submenu.ID}}' />
+									<input type='hidden' name='Parent' value='0' />
+									<input type='hidden' name='Name' value='{{submenu.Name}}' />
+									<input type='submit' name='DeleteMenu' class='delete' value='&#xf1f8; Delete'></form>
+									</form>
+								</div>
+							</div>
+								{% endif %}
+							{% endfor %}
+					{% endif %}
+					{% endfor %}

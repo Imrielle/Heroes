@@ -1,0 +1,41 @@
+
+<nav>
+    <div class="nav">
+    <ul>
+        {% for Menu in Menu %}
+            {% if Menu.Name == 'Home' %}<li class="title{% if Menu.Name == Page %} current{% endif %}"><a href="index.php">{{SiteName}}</a></li>
+            {% elseif Menu.Name == 'Credits' %}
+            {% elseif Menu.Name == 'Users' %}
+                <li{% if Menu.Name == Page %} class="current"{% endif %}><a href="index.php?p={{Menu.Link}}">{{Menu.Name}} <i class="arrow-down icon-angle-down"></i></a>
+                    <ul class="dropdown">
+                {% if UserStatus == '0' %}
+                    <li><a href="index.php?p=Users&sp=Register">Register</a></li>
+                    <li><a href="index.php?p=Users&sp=Signin">Signin</a></li>
+                {% else %}
+                    {% for Sub in SubMenu %}
+                        {% if Sub.Parent == Menu.ID %}
+                            <li><a href="index.php?p={{Menu.Link}}&sp={{Sub.Link}}">{{Sub.Name}}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    <li><a href="index.php?p=Users&sp=Logout">Logout</a></li>
+                {% endif %}
+                    </ul>
+                </li>
+            {% elseif Menu.Access <= UserAccess %}<li{% if Menu.Name == Page %} class="current"{% endif %}><a href="index.php?p={{Menu.Link}}">{{Menu.Name}} {% if Menu.Children != 0 %}<i class="arrow-down icon-angle-down"></i></a><ul class="dropdown">
+                        {% for Sub in SubMenu %}
+                            {% if Sub.Parent == Menu.ID %}
+                            {% if Sub.Access <= UserAccess and Sub.Status == '1' %}<li><a href="index.php?p={{Menu.Link}}&sp={{Sub.Link}}">{{Sub.Name}}</a></li>{% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                </a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    </div>
+    <div class="nav-bg">
+        <div class="navbar"> <span></span> <span></span> <span></span> </div>
+        <a href="index.php" class="title">{{SiteName}}</a>
+    </div>
+</nav>

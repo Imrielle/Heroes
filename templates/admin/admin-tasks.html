@@ -1,0 +1,59 @@
+<h4><i class="icon-ok"></i> TASK MANAGER</h4>
+<div class="col_3">
+	<h6>Menu</h6>
+	<form method="POST" id="filterTask">
+		<input type="text" placeholder="Filter Tasks" size="20" class="brd">
+		<button class="bld">Go</button>
+	</form>
+	<br />
+	<h5>Add Task</h5>
+	<form method="POST" id="newTask" class="add-task">
+		<label for="name" class="label">Name</label>
+		<input type="text" name="name" placeholder="Task Name" size="23">
+		<label for="parent" class="labelselect">Parent</label>
+		<select name="parent">
+			{$Optlist}
+		</select>
+		<label for="status" class="label0">Status</label>
+		<div>
+			<section id="status" class="section">
+				<div class="cradio">
+					<input type="radio" name="status" id="radio-1" value="-10" checked>
+					<label for="radio-1"><span class="radio">Planning</span></label>
+				</div>
+				<div class="cradio">
+					<input type="radio" name="status" id="radio-2" value="-10">
+					<label for="radio-2"><span class="radio">Fixing</span></label>
+				</div>
+				<div class="cradio">
+					<input type="radio" name="status" id="radio-3" value="10">
+					<label for="radio-3"><span class="radio">Started</span></label>
+				</div>
+				<div class="cradio">
+					<input type="radio" name="status" id="radio-7" value="25">
+					<label for="radio-7"><span class="radio">Coffee... (25%)</span></label>
+				</div>
+				<div class="cradio">
+					<input type="radio" name="status" id="radio-4" value="50">
+					<label for="radio-4"><span class="radio">Halfway there(50%)</span></label>
+				</div>
+				<div class="cradio">
+					<input type="radio" name="status" id="radio-5" value="75">
+					<label for="radio-5"><span class="radio">Polishing Up (75%)</span></label>
+				</div>
+				<div class="cradio">
+					<input type="radio" name="status" id="radio-6" value="100">
+					<label for="radio-6"><span class="radio">Completed (100%)</span></label>
+				</div>
+			</section>
+		</div>
+		<label for="description"  class="label">Description</label>
+		<textarea name="description" placeholder="Description" cols="29"></textarea>
+		<button type="submit" form="newTask" value="Submit" name="AddTask" class="small">Add Task</button>
+	</form>
+</div>
+<div class="col_9">
+	{$Notice}
+	{function="get_task_tree(0)"}
+</div>
+{$Content}

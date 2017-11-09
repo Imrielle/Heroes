@@ -1,0 +1,26 @@
+<div id="point-buy-table">
+    <h6>Stats</h6>
+    <ul>
+        {% for Stat in Stats %}
+        <li>{{Stat.Name}}</li>
+        <li>
+            <label for="{{Stat.SName}}">Base</label>
+            <input type='text' id='{{Stat.SName}}' name='{{Stat.SName}}' value='8' class='qty' disabled />+
+            <input type='text' id='{{Stat.SName}}-racial' name='{{Stat.SName}}-racial' value='1' disabled />
+        </li>
+        <li>
+            <label for="{{Stat.SName}}-total">Total</label>
+            <input type="text" name="{{Stat.SName}}-total" value="9" readonly />
+        </li>
+        <li>
+            <label for="{{Stat.SName}}-modifier">Mod</label>
+            <input type="text" name="{{Stat.SName}}-modifier" value="-1" readonly />
+        </li>
+        <li>
+            <input type='button' value='-' class='qtyminus' field='{{Stat.SName}}' />
+            <input type='text' name='{{Stat.SName}}-cost' value='0' disabled />
+            <input type='button' value='+' class='qtyplus' field='{{Stat.SName}}' />
+        </li>
+        {% endfor %}
+    </ul>
+</div>

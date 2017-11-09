@@ -1,0 +1,299 @@
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Hall of Heroes</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="assets/css/fontello.css">
+		<link rel="stylesheet" href="templates/default/css/style.css">
+		<link rel="stylesheet" href="templates/default/css/dnd.css">
+		<link rel="stylesheet" href="templates/default/css/slider.css">
+		<!--<link rel="stylesheet" href="templates/default/css/colors.php">-->
+		<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+		<script type="text/javascript" src="assets/js/scripts.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Archivo:400,700&amp;subset=latin-ext" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet">
+	</head>
+	<body class='Default'>
+		<header><a href='index.php'>Hall of Heroes</a> > <a href='index.php?p=Admin'>Admin</a>> Main Menu</header>
+		<nav><ul>
+				<li><a href='index.php'>Home</a></li>
+				<li><a href='index.php?p=Forums'>Forums</a>
+					<ul>
+						<li><a href='index.php?p=Forums&sp=Member_List'>Member List</a></li>
+					</ul>
+				</li>
+				<li><a href='index.php?p=Characters'>Characters</a>
+					<ul>
+						<li><a href='index.php?p=Characters&sp=CharCreate'>Create Character</a></li>
+					</ul>
+				</li>
+				<li><a href='index.php?p=DnD'>DnD</a></li>
+
+				<li><a href='index.php?p=Users'>Users</a>
+					<ul>
+						<li><a href='index.php?p=Users&sp=Dashboard'>Dashboard</a></li>
+					</ul>
+				</li>
+
+				<li class='current'><a href='index.php?p=Admin'>Admin</a>
+					<ul>
+						<li><a href='index.php?p=Admin&sp=Main_Menu'>Main Menu</a></li>
+						<li><a href='index.php?p=Admin&sp=Settings'>Settings</a></li>
+						<li><a href='index.php?p=Admin&sp=Themes'>Themes</a></li>
+					</ul>
+				</li>
+			</ul></nav>
+		<div class="wrapper">
+			<section>
+				<article>
+					<div class='grid'>
+						<div class='row'>
+							<div class='col col_2'><h3>Admin Menu</h3>
+								<ul>
+									<li><a href="?p=Admin&sp=Main_Menu">Main Menu</a></li>
+									<li><a href="?p=Admin&sp=Settings">Settings</a></li>
+									<li><a href="?p=Admin&sp=Themes">Themes</a></li>
+								</ul>
+							</div>
+							<div class='col col_10'>
+								<h1><i class="icon-menu"></i> Admin: Main Menu</h1>
+
+								<p>Here, you can add links to the main menu. A name is required, a file, however, is optional.</p>
+								<p>If you are specifying a file for that page to use, its path is relative to the home folder, for example: if you've 
+									placed the file in a folder named "data", the file path would be "data/filename.ext".</p>
+								<p>Similarly, you can also specify a template file to use. This is useful for when you've created a template just for a page, </p>
+								<p>Template files are relative to the template folder that you are using. If you've placed an HTML file in the "templates/default/" folder and named it "filename", simply put "filename" in the field.</p>
+								<p>Otherwise, if you've placed "filename" in a "templates/default/dipstick" folder, type in "dipstick/filename".</p>
+								<form method="post">
+									<div class='grid'>
+										<h3>Main Menu</h3>
+										<div class='row'>
+											<div class='col col_2'>Name*</div>
+											<div class='col col_2'>Icon</div>
+											<div class='col col_2'>Template</div>
+											<div class='col col_2'>Access</div>
+											<div class='col col_2'>File</div>
+											<div class='col col_2'></div>
+										</div>
+										<div class='row'>
+											<div class='col col_2'><input name="mn_name" type="text" placeholder="Name" required /></div>
+											<div class='col col_2'>
+												<select name="mn_icon">
+													<option value='chat'>Chat</option>
+													<option value='cog'>Cog</option>
+													<option value='headphones'>Headphones</option>
+													<option value='heart'>Heart</option>
+													<option value='mail-alt'>Mail</option>
+													<option value='Menu'>Menu</option>
+													<option value='pencil'>Pencil</option>
+													<option value='star'>Star</option>
+													<option value='user'>User</option>
+													<option value='wrench'>Wrench</option>
+												</select>
+											</div>
+											<div class='col col_2'><input name="mn_template" type="text" placeholder="Template" /></div>
+											<div class='col col_2'>
+												<select name="mn_access">
+													<option value='0'>Public</option>
+													<option value='1'>Registered</option>
+													<option value='2'>Player</option>
+													<option value='9'>Admin</option>
+												</select>
+											</div>
+											<div class='col col_2'><input name="mn_file" type="text" placeholder="File" /></div>
+											<div class='col col_2'><button type="submit" name="AddMain">Add main menu</button></div>
+										</div>
+								</form>
+								<h3>Sub Menu</h3>
+								<div class='row'>
+									<div class='col col_2'>Name*</div>
+									<div class='col col_2'>Parent</div>
+									<div class='col col_2'>File</div>
+									<div class='col col_2'>Template</div>
+								</div>
+								<div class='row'>
+									<form method="post">
+										<div class='col col_2'><input type="text" placeholder="Name" name="s_name" /></div>
+										<div class='col col_2'><select name="s_parent">
+												<option value='2'>Admin</option>
+												<option value='3'>Users</option>
+												<option value='5'>Forums</option>
+												<option value='8'>Characters</option>
+												<option value='10'>DnD</option>
+											</select></div>
+										<div class='col col_2'><input type="text" placeholder="File" name="s_file" /></div>
+										<div class='col col_4'><input type="text" placeholder="Template" name="s_template" /></div>
+										<div class='col col_2'><button type="submit" name="AddSub">Add sub menu</button></div>
+									</form>
+								</div>
+								<h3>Edit Menu Items</h3>
+								<div class="row">
+									<div class='col col_5 th'>Name</div>
+									<div class='col col_2 th'>File</div>
+									<div class='col col_2 th'>Icon</div>
+									<div class='col col_1 th'>Access</div>
+									<div class='col col_2 th'></div>
+								</div>
+								<div class="row">
+									<form method='POST' name='EditMenu' id='EditMenu-5'>
+										<div class="col col_3"><span class="input">Forums</span></div>
+										<div class='col col_2'><input type="text" name="m_Name" value="Forums"></div>
+										<div class='col col_2'><input type="text" name="m_File" value="forums.php"></div>
+										<div class='col col_2'>
+											<select name="m_Icon">
+												<option value='chat'>Chat</option>
+												<option value='cog'>Cog</option>
+												<option value='headphones'>Headphones</option>
+												<option value='heart'selected>Heart</option>
+												<option value='mail-alt'>Mail</option>
+												<option value='Menu'>Menu</option>
+												<option value='pencil'>Pencil</option>
+												<option value='star'>Star</option>
+												<option value='user'>User</option>
+												<option value='wrench'>Wrench</option>
+											</select>
+										</div>
+										<div class='col col_1'>
+											<select name="mn_access">
+												<option value='0'>Public</option>
+												<option value='1'>Registered</option>
+												<option value='2'>Player</option>
+												<option value='9'>Admin</option>
+											</select>
+										</div>
+										<div class='col col_1'><input type='submit' name='EditMenu' class='edit' value='&#xe828; Edit'></form></div>
+										<div class='col col_1'>
+											<form method='POST' name='DeleteMenu' id='deleteMenu-5'>
+												<input type='hidden' name='ID' value='5' />
+												<input type='hidden' name='Parent' value='1' />
+												<input type='hidden' name='Name' value='Forums' />
+												<input type='submit' name='DeleteMenu' class='delete' value='&#xf1f8; Delete'></form>
+										</div>
+								</div>
+								<div class="row">
+									<div class="col col_1"><span class="input"><i class="icon-level-down"></i></span></div>
+									<form method='POST' name='EditMenu' id='EditMenu-6'>
+										<div class="col col_2"><span class="input">Member List</span></div>
+										<div class='col col_2'><input type="text" name="sm_Name" value="Member List"></div>
+										<div class='col col_2'><input type="text" name="sm_File" value=""></div>
+										<div class='col col_3'>&nbsp;</div>
+										<div class='col col_1'><input type='submit' name='EditMenu' class='edit' value='&#xe828; Edit'></form></div>
+										<div class='col col_1'>
+											<form method='POST' name='DeleteMenu' id='deleteMenu-6'>
+												<input type='hidden' name='ID' value='6' />
+												<input type='hidden' name='Parent' value='0' />
+												<input type='hidden' name='Name' value='Member List' />
+												<input type='submit' name='DeleteMenu' class='delete' value='&#xf1f8; Delete'></form>
+									</form>
+								</div>
+							</div>
+							<div class="row">
+								<form method='POST' name='EditMenu' id='EditMenu-8'>
+									<div class="col col_3"><span class="input">Characters</span></div>
+									<div class='col col_2'><input type="text" name="m_Name" value="Characters"></div>
+									<div class='col col_2'><input type="text" name="m_File" value="dnd.php"></div>
+									<div class='col col_2'>
+										<select name="m_Icon">
+											<option value='chat'>Chat</option>
+											<option value='cog'>Cog</option>
+											<option value='headphones'>Headphones</option>
+											<option value='heart'>Heart</option>
+											<option value='mail-alt'>Mail</option>
+											<option value='Menu'>Menu</option>
+											<option value='pencil'>Pencil</option>
+											<option value='star'selected>Star</option>
+											<option value='user'>User</option>
+											<option value='wrench'>Wrench</option>
+										</select>
+									</div>
+									<div class='col col_1'>
+										<select name="mn_access">
+											<option value='0'>Public</option>
+											<option value='1'>Registered</option>
+											<option value='2'>Player</option>
+											<option value='9'>Admin</option>
+										</select>
+									</div>
+									<div class='col col_1'><input type='submit' name='EditMenu' class='edit' value='&#xe828; Edit'></form></div>
+									<div class='col col_1'>
+										<form method='POST' name='DeleteMenu' id='deleteMenu-8'>
+											<input type='hidden' name='ID' value='8' />
+											<input type='hidden' name='Parent' value='1' />
+											<input type='hidden' name='Name' value='Characters' />
+											<input type='submit' name='DeleteMenu' class='delete' value='&#xf1f8; Delete'></form>
+									</div>
+							</div>
+							<div class="row">
+								<div class="col col_1"><span class="input"><i class="icon-level-down"></i></span></div>
+								<form method='POST' name='EditMenu' id='EditMenu-9'>
+									<div class="col col_2"><span class="input">Create Character</span></div>
+									<div class='col col_2'><input type="text" name="sm_Name" value="Create Character"></div>
+									<div class='col col_2'><input type="text" name="sm_File" value="create.php"></div>
+									<div class='col col_3'>&nbsp;</div>
+									<div class='col col_1'><input type='submit' name='EditMenu' class='edit' value='&#xe828; Edit'></form></div>
+									<div class='col col_1'>
+										<form method='POST' name='DeleteMenu' id='deleteMenu-9'>
+											<input type='hidden' name='ID' value='9' />
+											<input type='hidden' name='Parent' value='0' />
+											<input type='hidden' name='Name' value='Create Character' />
+											<input type='submit' name='DeleteMenu' class='delete' value='&#xf1f8; Delete'></form>
+								</form>
+							</div>
+						</div>
+						<div class="row">
+							<form method='POST' name='EditMenu' id='EditMenu-10'>
+								<div class="col col_3"><span class="input">DnD</span></div>
+								<div class='col col_2'><input type="text" name="m_Name" value="DnD"></div>
+								<div class='col col_2'><input type="text" name="m_File" value="dnd.php"></div>
+								<div class='col col_2'>
+									<select name="m_Icon">
+										<option value='chat'>Chat</option>
+										<option value='cog'>Cog</option>
+										<option value='headphones'>Headphones</option>
+										<option value='heart'>Heart</option>
+										<option value='mail-alt'>Mail</option>
+										<option value='Menu'>Menu</option>
+										<option value='pencil'>Pencil</option>
+										<option value='star'selected>Star</option>
+										<option value='user'>User</option>
+										<option value='wrench'>Wrench</option>
+									</select>
+								</div>
+								<div class='col col_1'>
+									<select name="mn_access">
+										<option value='0'>Public</option>
+										<option value='1'>Registered</option>
+										<option value='2'>Player</option>
+										<option value='9'>Admin</option>
+									</select>
+								</div>
+								<div class='col col_1'><input type='submit' name='EditMenu' class='edit' value='&#xe828; Edit'></form></div>
+								<div class='col col_1'>
+									<form method='POST' name='DeleteMenu' id='deleteMenu-10'>
+										<input type='hidden' name='ID' value='10' />
+										<input type='hidden' name='Parent' value='0' />
+										<input type='hidden' name='Name' value='DnD' />
+										<input type='submit' name='DeleteMenu' class='delete' value='&#xf1f8; Delete'></form>
+								</div>
+						</div>
+					</div>
+					</div>
+					</div>
+				</article>				</section>
+		</div>
+		<footer><div class='grid'>
+				<div class='row'>
+					<div class='col col_4'></div>
+					<div class='col col_4'>
+						<a href=''><i class="icon-twitter"></i></a>
+						<a href=''><i class="icon-steam"></i></a>
+						<a href=''><i class="icon-discord"></i></a>
+						<a href=''><i class="icon-git"></i></a>
+					</div>
+					<div class='col col_4'><a href=''>Powered by Knack CMS</a></div>
+				</div>
+			</div></footer>
+	</body>
+</html>

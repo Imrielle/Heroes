@@ -1,0 +1,162 @@
+/* 
+    Created on : Nov 2, 2017, 4:53:10 AM
+    Author     : Imrielle
+*/
+* {margin: 0; padding: 0;}
+body {
+    background-color: #f5f5f5;
+    color: #424242;
+    font-size: small;
+    height: auto;
+    margin: 0;
+    padding-top: 50px;
+    padding-bottom: 35px;
+    line-height: 20px;
+    text-shadow: 1px 1px 3px #9E9E9E;
+}
+a, a:visited, a:active {
+    text-decoration: none;
+    color: #0097A7;
+}
+a:hover {
+    color: #00ACC1;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin: 0 2px;
+    padding: 0 3px;
+    border-bottom: 1px solid #BDBDBD;
+}
+h1 {font-size: 1.5em;}
+h2 {font-size: 1.4em;}
+h3 {font-size: 1.3em;}
+h4 {font-size: 1.2em;}
+h5 {font-size: 1.1em;}
+h6 {font-size: 1.0em;}
+p {text-indent: 10px;}
+ol, ul {
+    margin: 0;
+    padding: 0 5px;
+}
+nav, footer {
+    min-width: 360px;
+    position: fixed;
+    width: 100%;
+}
+nav {
+    top: 0;
+    z-index: 999;
+    background-color: #616161;
+    box-shadow: 0 5px 5px 0 #BDBDBD;
+}
+footer {
+    bottom: 0;
+    background-color: #616161;
+    color: #EEE;
+    text-align: center;
+}
+
+#wrapper {
+    background: #EEEEEE;
+    border: 1px solid #E0E0E0;
+    box-shadow: 2px 2px 5px 0 #BDBDBD;
+    margin: 0 auto;
+    width: 95%;
+}
+
+/* Forms */
+button, a.button, input[type=submit], input[type=reset], input[type=button]{
+    background-color: #00ACC1;
+    border: none;
+    border-radius: 3px;
+    color: #EEEEEE;
+	display: inline-block;
+    font-size: small;
+    height: 20px;
+    line-height: 20px;
+    max-width: 120px;
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+
+button:hover, a.button:hover, input[type=submit]:hover, input[type=reset]:hover, input[type=button]:hover{
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+fieldset {border: 1px solid #fcc;}
+input[type='text'], input[type='password'], textarea, select {
+    background: none;
+    border: none;
+    padding: 0 3px;
+    margin: 0;
+    font-size: small;
+    border-bottom: 3px solid #00ACC1;
+    max-width: 300px;
+    width: 100%;
+    outline: none;
+}
+input:read-only, input:disabled {border-color: #BBB; border-bottom-style: dashed; border-bottom-width: 1px;}
+select {padding: 0;}
+
+
+/* Grid */
+.row {position: relative; height: 100%;}
+
+[class*='col_'] {
+	box-sizing: border-box;
+	float: left;
+	min-height: 20px;
+	margin: 1px;
+	padding: 2px 3px;
+	position: relative;
+}
+[class*='col_']:after {
+	clear:both;
+	content: '';
+}
+
+.col_1 {width: calc(8.3% - 2px);}
+.col_2 {width: calc(16.6% - 2px);}
+.col_3 {width: calc(24.9% - 2px);}
+.col_4 {width: calc(33.2% - 2px);}
+.col_5 {width: calc(41.5% - 2px);}
+.col_6 {width: calc(49.8% - 2px);}
+.col_7 {width: calc(58.1% - 2px);}
+.col_8 {width: calc(66.4% - 2px);}
+.col_9 {width: calc(74.7% - 2px);}
+.col_10 {width: calc(83% - 2px);}
+.col_11 {width: calc(91.3% - 2px);}
+.col_12 {width: calc(99.6% - 2px);}
+
+#wrapper:before, #wrapper:after, .row:before, .row:after { clear: both; content: ''; display: table; }
+
+ul.tabs{
+    margin: 2px 10px -1px 10px;
+	padding: 0px;
+	list-style: none;
+}
+ul.tabs li {
+	background: #DDD;
+	display: inline-block;
+	padding: 10px 15px;
+	cursor: pointer;
+    border-color: #BBB;
+    border-style: solid;
+    border-width: 1px 1px 0 1px;
+}
+ul.tabs li.current {
+	background: #EEE;
+    border-color: #CCC;
+}
+.tab-content{
+    margin: 0 10px;
+	display: none;
+	background: #FEE;
+	padding: 15px;
+    border-color: #CCC;
+    border-style: solid;
+    border-width: 1px;
+}
+.tab-content.current{
+	display: block;
+}

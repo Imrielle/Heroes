@@ -1,0 +1,132 @@
+#createCharacter ul,
+#createCharacter ol {
+    list-style: none;
+}
+
+li input[type='text']:disabled {
+    display: inline block;
+    width: 25%;
+    text-align: center;
+}
+
+li label {
+    width: 50%;
+    text-align: center;
+}
+
+/* D&D Character Creation */
+
+.qtyplus,
+.qtyminus {
+    padding: 0;
+    margin: 0 1px;
+    height: 20px;
+    width: 20px !important;
+}
+
+#createCharacter input[type='text'],
+#createCharacter textarea,
+#createCharacter select,
+#point-buy-table input[type='text']:disabled,
+#point-buy-table input[type='text']:read-only {
+    padding: 0 3px;
+    border-bottom: 2px solid #BDBDBD;
+}
+
+#point-buy-table input[type='text']:disabled,
+#point-buy-table input[type='text']:read-only {
+    display: inline block;
+    width: 20px;
+    text-align: center;
+}
+
+#createCharacter input[type=submit],
+#createCharacter input[type=reset],
+#createCharacter input[type=button] {
+    background-color: #BDBDBD;
+    color: #555555;
+}
+
+.control {
+    display: inline-block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.control input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+.control__indicator {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    background: #BDBDBD;
+}
+
+.control--radio .control__indicator {
+    border-radius: 50%;
+}
+
+.control:hover input ~ .control__indicator,
+.control input:focus ~ .control__indicator {
+    background: #ccc;
+}
+
+.control input:checked ~ .control__indicator {
+    background: #00ACC1;
+}
+
+.control:hover input:not([disabled]):checked ~ .control__indicator,
+.control input:checked:focus ~ .control__indicator {
+    background: #00ACC1;
+}
+
+.control input:disabled ~ .control__indicator {
+    background: #e6e6e6;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.control__indicator:after {
+    content: '';
+    position: absolute;
+    display: none;
+}
+
+.control input:checked ~ .control__indicator:after {
+    display: block;
+}
+
+.control--checkbox .control__indicator:after {
+    left: 6px;
+    top: 2px;
+    width: 3px;
+    height: 8px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.control--checkbox input:disabled ~ .control__indicator:after {
+    border-color: #7b7b7b;
+}
+
+.control--radio .control__indicator:after {
+    left: 4px;
+    top: 4px;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.control--radio input:disabled ~ .control__indicator:after {
+    background: #7b7b7b;
+}

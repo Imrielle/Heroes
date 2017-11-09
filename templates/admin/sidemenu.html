@@ -1,0 +1,8 @@
+<h3>Admin Menu</h3>
+<ul>
+{% for sub in SubMenu2 %}
+	{% if sub.Parent == '2' %}
+	<li><a href="?p=Admin&sp={{sub['Link']}}">{{sub['Name']}}</a></li>
+	{% endif %}
+{% endfor %}
+</ul>
