@@ -1,0 +1,71 @@
+.card-body {
+    width: 23%;
+    height: 360px;
+    background-color: #BDBDBD;
+    border: 1px solid #E0E0E0;
+    padding-top: 5px;
+    margin: 5px .9%;
+    border-radius: 3px;
+    float: left;
+}
+
+.card-body .spellName {
+    width: 95%;
+    line-height: 20px;
+    background-color: #fff;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
+
+.card-body .spellType { 
+    color: #424242;
+    font-size: .9em;
+    text-align: center;
+    margin: 1px auto -3px;
+}
+
+.card-body .spellTable {
+    width: 95%;
+    margin: 0 auto 2px auto;
+    text-align: center;
+}
+
+.card-body .spellTable .col_6 {
+    border: 1px solid #E0E0E0;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+.card-body .spellTable .table-title{
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.card-body .spellTable p.tableCasting{
+    font-size: .9em;
+    margin-top: -5px;
+}
+
+.card-body .spellDesc {
+    width: 95%;
+    margin: 0 auto;
+    height: 200px;
+    background: #ffffff;
+    border-radius: 5px;
+    font-size: .9em;
+    overflow-y: scroll;
+}
+
+.card-body .spellDesc p {
+  padding:5px;
+}
+.card-body .School {
+  font-size: .9em;
+}
+
+.card-body .Source {
+    font-size: .8em;
+    text-align: right;
+}

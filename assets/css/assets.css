@@ -37,7 +37,7 @@ ol, ul {
     margin: 0;
     padding: 0 5px;
 }
-nav, footer {
+nav {
     min-width: 360px;
     position: fixed;
     width: 100%;
@@ -48,12 +48,7 @@ nav {
     background-color: #616161;
     box-shadow: 0 5px 5px 0 #BDBDBD;
 }
-footer {
-    bottom: 0;
-    background-color: #616161;
-    color: #EEE;
-    text-align: center;
-}
+
 
 #wrapper {
     background: #EEEEEE;
