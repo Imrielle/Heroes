@@ -13,7 +13,7 @@ $Stats[] = array("Name" => 'Intelligence', "SName" => 'Int');
 $Stats[] = array("Name" => 'Wisdom', "SName" => 'Wis');
 $Stats[] = array("Name" => 'Charisma', "SName" => 'Cha');
 
-$Classes = ReadInfo("*", "cms_classes", " ORDER BY `Name` ASC", "all");
+$Classes = ReadInfo("*", "cms_classes", "ORDER BY `Name` ASC", "all");
 $Races = ReadInfo("*", "cms_races", "WHERE `Active` = '1' ORDER BY `rName` ASC", "all");
 $Armor = ReadInfo("*", "cms_dnd_armor", "ORDER BY `Name` ASC", "all");
 $Weapons = ReadInfo("*", "cms_dnd_weapons", "ORDER BY `Name` ASC", "all");
