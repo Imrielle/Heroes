@@ -18,12 +18,15 @@ $AlgnL = array('Lawful Good', 'Neutral Good', 'Chaotic Good', 'Lawful Neutral', 
 
 $Classes = ReadInfo("*", "cms_classes", "", "all");
 $Races = ReadInfo("*", "cms_races", "WHERE `Active` = '1' ORDER BY `rName` ASC", "all");
+$Factions = ReadInfo("*", "cms_dnd_factions", 'ORDER BY `Name`', "all");
 
 //array_sort_by_column($Races, 'rName');
+
 
 $twig->addGlobal('Stats', $Stats);
 $twig->addGlobal('Classes', $Classes);
 $twig->addGlobal('Races', $Races);
+$twig->addGlobal('Factions', $Factions);
 
     if ($sp == 'Main') {
         $Title = 'Characters';
