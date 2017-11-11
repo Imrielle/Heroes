@@ -1810,6 +1810,29 @@ INSERT INTO `cms_races` (`ID`, `rName`, `rFullName`, `rSubName`, `rSize`, `rSpee
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cms_dnd_factions`
+--
+
+CREATE TABLE `cms_dnd_factions` (
+  `ID` int(11) NOT NULL,
+  `Name` varchar(150) NOT NULL,
+  `Description` text NOT NULL,
+  `Goals` text NOT NULL,
+  `Beliefs` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `cms_factions` (`ID`, `Name`, `Description`, 'Goals', 'Beliefs') VALUES
+(1,'Emerald Enclave', 'The Emerald Enclave is a widespread group of wilderness survivalists who preserve the natural order while rooting out unnatural threats. The organization is decentralized, hardy, and reclusive. Barbarians, druids, and rangers of good or neutral alignments are commonly drawn to the Emerald Enclave.',
+'Restore and preserve the natural order.<br />Destroy all that is unnatural.<br />Keep the elemental forces of the world in check.<br /> Keep civilization and the wilderness from destroying each other.','The natural order must be respected and preserved.<br />Forces that upset the natural order must be destroyed.<br />Civilization and the wilderness must learn to coexist peacefully.'),
+(2,'Harpers', 'The Harpers is a scattered network of spellcasters and spies who advocate equality and covertly oppose the abuse of power. The organization is benevolent, knowledgeable, and secretive. Bards and wizards of good alignments are commonly drawn to the Harpers.','Gather information throughout Faerûn. <br />Promote fairness and equality by covert means.<br /> Thwart tyrants and leaders, governments, and organizations that grow too powerful. <br />Aid the weak, poor and oppressed.','One can never have too much information or arcane knowledge.<br />Too much power leads to corruption. The abuse of magic must be closely monitored.<br />No one should be powerless.',
+(3,'Lords\' Aliance', 'The Lords\' Alliance is a loose coalition of established political powers concerned with mutual security and prosperity. The organization is aggressive, militant, and political. Fighters and sorcerers of lawful or neutral alignments are commonly drawn to the Lords’ Alliance.','Ensure the safety and prosperity of cities and other settlements of Faerûn.<br />Maintain a strong coalition against the forces of disorder.<br />Proactively eliminate threats to the established powers.<br />Bring honor and glory to one’s leaders and one’s homeland.','If civilization is to survive, all must unite against the dark forces that threaten it.<br />  Fight for your realm. Only you can bring honor, glory, and prosperity to your lord and homeland.<br />  Don’t wait for the enemy to come to you. The best defense is a strong offense.'),
+(4,'Order of the Gauntlet', 'The Order of the Gauntlet is composed of faithful and vigilant seekers of justice who protect others from the depredations of evildoers. The organization is honorable, vigilant, and zealous. Clerics, monks, and paladins of good (and often lawful good) alignments are commonly drawn to the Order of the Gauntlet.', 'Be armed and vigilant against evil.<br />Identify evil threats such as secretive power groups and inherently evil creatures.<br />Enforce justice.<br />Enact retribution against evil actions—do not strike preemptively.','Faith is the greatest weapon against evil—faith in one’s god, one’s friends, and one’s self.<br />Battling evil is an extraordinary task that requires extraordinary strength and bravery<br />Punishing an evil act is just. Punishing an evil thought is not.'),
+(5,'Zhentarium', 'The Zhentarim is an unscrupulous shadow network that seeks to expand its influence and power throughout Faerûn. The organization is ambitious, opportunistic, and meritocratic. Rogues and warlocks of neutral and/or evil alignments are commonly drawn to the Zhentarim.', 'Amass wealth.<br />Look for opportunities to seize power.<br />Gain influence over important people and organizations.<br />Dominate Faerûn.','The Zhentarim is your family. You watch out for it, and it watches out for you.<br />You are the master of your own destiny. Never be less than what you deserve to be.<br />Everything—and everyone—has a price.'
+);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `cms_tasks`
 --
 
