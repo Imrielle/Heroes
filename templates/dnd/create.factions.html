@@ -1,0 +1,23 @@
+<div class="row">
+    <h5>You may choose to start with a faction.</h5>
+    <div class="col_4">
+        <select id='Faction' name="Faction">
+            <option value='0' selected>None</option>
+            {% for Faction in Factions %}
+            <option value='{{Faction.ID}}'>{{Faction.Name}}</option>
+            {% endfor %}
+        </select>
+        <label for="Faction">Current Faction</label>
+    </div>
+    <div class="col_4">
+        {% for Faction in Factions %}
+        <div visibly="Faction:{{Faction.ID}}">
+            <img src="images/factions/{{Faction.ID}}.png" alt="Your image path is bad and you should feel bad." width="300" height="300">
+            <h5>"{{Faction.Name|raw}}"</h5>
+            <p>"{{Faction.Description|raw}}"</p>
+            <p>"{{Faction.Goals|raw}}"</p>
+            <p>"{{Faction.Beliefs|raw}}"</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
