@@ -3,7 +3,7 @@
     <div class="col_12">
         {% for Flw in Flaws %}
         <div visibly="Background:{{Flw.bg_id}}">
-            <label class="control control--radio"><input type="checkbox" name="flaw" value="{{Flw.ID}}">{{Flw.flaw_desc}}
+            <label class="control control--radio"><input type="radio" name="flaw" value="{{Flw.ID}}">{{Flw.flaw_desc}}
                 <div class="control__indicator"></div>
             </label>
         </div>
