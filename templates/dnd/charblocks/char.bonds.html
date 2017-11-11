@@ -3,7 +3,7 @@
     <div class="col_12">
         {% for Bnd in Bonds %}
         <div visibly="Background:{{Bnd.bg_id}}">
-            <label class="control control--radio"><input type="checkbox" name="bond" value="{{Bnd.ID}}">{{Bnd.bond_desc}}
+            <label class="control control--radio"><input type="radio" name="bond" value="{{Bnd.ID}}">{{Bnd.bond_desc}}
                 <div class="control__indicator"></div>
             </label>
         </div>
