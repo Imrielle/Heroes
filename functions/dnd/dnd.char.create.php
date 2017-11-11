@@ -4,7 +4,7 @@ $Scripts = '<script type="text/javascript" src="assets/js/jscolor.min.js"></scri
         <script src="assets/js/charCreateAjax.js" type="text/javascript"></script>';
 
 $CSS = '<link href="assets/css/charCreate.css" rel="stylesheet" type="text/css" />';
-$BGs = ReadInfo("*", "cms_bg_backgrounds", "WHERE `Active` = '1' ORDER BY `Name` ASC", "all");
+$BGs = ReadInfo("*", "cms_bg_backgrounds", "ORDER BY `background` ASC", "all");
 $Bonds = ReadInfo("*", "cms_bg_bonds", "", "all");
 $Features = ReadInfo("*", "cms_bg_features", "", "all");
 $Flaws = ReadInfo("*", "cms_bg_flaws", "", "all");

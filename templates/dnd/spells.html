@@ -1,211 +1,80 @@
-<select id="level">
-    <option value="level0">Cantrips</option>
-    <option value="level1">Level 1</option>
-    <option value="level2">Level 2</option>
-    <option value="level3">Level 3</option>
-    <option value="level4">Level 4</option>
-    <option value="level5">Level 5</option>
-    <option value="level6">Level 6</option>
-    <option value="level7">Level 7</option>
-    <option value="level8">Level 8</option>
-    <option value="level9">Level 9</option>
-</select>
+<div class="row">
+    <div class="col_3">
+        <select id="Level">
+            <option value="All">All</option>
+            <option value="Cantrip" selected>Cantrips</option>
+            <option value="1st-level">Level 1</option>
+            <option value="2nd-level">Level 2</option>
+            <option value="3rd-level">Level 3</option>
+            <option value="4th-level">Level 4</option>
+            <option value="level5">Level 5</option>
+            <option value="level6">Level 6</option>
+            <option value="level7">Level 7</option>
+            <option value="level8">Level 8</option>
+            <option value="level9">Level 9</option>
+        </select>
+    </div>
+    <div class="col_3">
+        <select id="School">
+            <option>All</option>
+            <option>Abjuration</option>
+            <option>Conjuration</option>
+            <option>Divination</option>
+            <option>Enchantment</option>
+            <option>Evocation</option>
+            <option>Illusion</option>
+            <option>Necromancy</option>
+            <option>Transmutation</option>
+        </select>
+    </div>
+    <div class="col_3">
+        <select id="Class">
+            <option>All</option>
+            <option>Cleric</option>
+            <option>Druid</option>
+            <option>Ranger</option>
+            <option>Bard</option>
+            <option>Paladin</option>
+            <option>Ritual Caster</option>
+            <option>Wizard</option>
+            <option>Sorcerer</option>
+        </select>
+    </div>
+</div>
+<div id="test">
 {% for Level in Level0 %}
-        <div class="row" visibly="level:level0">
-            <h4>{{Level.Name}}</h4>
+    <div class="card-body" visibly="level:{{Level.Level}},All;school:{{Level.School}},All">
+        <div class="spellName">{{Level.Name}}</div>
+        <p class="spellType">{{Level.Level}}, {{Level.School}}</p>
+        <div class="spellTable">
             <div class="row">
-                <div class="col_3"><h6>Range</h6></div>
-                <div class="col_9">{{Level.CastRange}}</div>
+                <div class="col_6">
+                    <p class="table-title">Casting Time</p>
+                    <p class="tableCasting">{{Level.CastTime}}</p>
+                </div>
+                <div class="col_6">
+                    <p class="table-title">Range</p>
+                    <p class="tableCasting">{{Level.CastRange}}</p>
+                </div>
             </div>
             <div class="row">
-                <div class="col_3"><h6>Duration</h6></div>
-                <div class="col_9">{{Level.Duration}}</div>
+                <div class="col_6">
+                    <p class="table-title">Components</p>
+                    <p class="tableCasting">{{Level.Components}}</p>
+                </div>
+                <div class="col_6">
+                    <p class="table-title">Duration</p>
+                    <p class="tableCasting">{{Level.Duration}}</p>
+                </div>
             </div>
-            <div class="row">
-                <div class="col_3"><h6>Cast Time</h6></div>
-                <div class="col_9">{{Level.CastTime}}</div>
-            </div>
-            <h5>Description</h5>
-            <div class="row"><div class="col_12">{{Level.Description|raw}}</div></div>
         </div>
-<br />{% endfor %}
-
-{% for Level in Level1 %}
-        <div class="row" visibly="level:level1">
-            <h4>{{Level.Name}}</h4>
-            <div class="row">
-                <div class="col_3"><h6>Range</h6></div>
-                <div class="col_9">{{Level.CastRange}}</div>
-            </div>
-            <div class="row">
-                <div class="col_3"><h6>Duration</h6></div>
-                <div class="col_9">{{Level.Duration}}</div>
-            </div>
-            <div class="row">
-                <div class="col_3"><h6>Cast Time</h6></div>
-                <div class="col_9">{{Level.CastTime}}</div>
-            </div>
-            <h5>Description</h5>
-            <div class="row"><div class="col_12">{{Level.Description|raw}}</div></div>
+        <div class="spellDesc scrollbar-outer">
+            <p>{{Level.Description|raw}}</p>
         </div>
-<br />{% endfor %}
-
-{% for Level in Level2 %}
-        <div class="row" visibly="level:level2">
-            <h4>{{Level.Name}}</h4>
-            <div class="row">
-                <div class="col_3"><h6>Range</h6></div>
-                <div class="col_9">{{Level.CastRange}}</div>
-            </div>
-            <div class="row">
-                <div class="col_3"><h6>Duration</h6></div>
-                <div class="col_9">{{Level.Duration}}</div>
-            </div>
-            <div class="row">
-                <div class="col_3"><h6>Cast Time</h6></div>
-                <div class="col_9">{{Level.CastTime}}</div>
-            </div>
-            <h5>Description</h5>
-            <div class="row"><div class="col_12">{{Level.Description|raw}}</div></div>
+        <div class="row">
+            <div class="col_6 School">{{Level.School}}</div>
+            <div class="col_6 Source">{{Level.Source}}</div>
         </div>
-<br />{% endfor %}
-
-{% for Level in Level3 %}
-        <div class="row" visibly="level:level3">
-            <h4>{{Level.Name}}</h4>
-            <div class="row">
-                <div class="col_3"><h6>Range</h6></div>
-                <div class="col_9">{{Level.CastRange}}</div>
-            </div>
-            <div class="row">
-                <div class="col_3"><h6>Duration</h6></div>
-                <div class="col_9">{{Level.Duration}}</div>
-            </div>
-            <div class="row">
-                <div class="col_3"><h6>Cast Time</h6></div>
-                <div class="col_9">{{Level.CastTime}}</div>
-            </div>
-            <h5>Description</h5>
-            <div class="row"><div class="col_12">{{Level.Description|raw}}</div></div>
-        </div>
-<br />{% endfor %}
-
-{% for Level in Level4 %}
-        <div class="row" visibly="level:level4">
-            <h4>{{Level.Name}}</h4>
-            <div class="row">
-                <div class="col_3"><h6>Range</h6></div>
-                <div class="col_9">{{Level.CastRange}}</div>
-            </div>
-            <div class="row">
-                <div class="col_3"><h6>Duration</h6></div>
-                <div class="col_9">{{Level.Duration}}</div>
-            </div>
-            <div class="row">
-                <div class="col_3"><h6>Cast Time</h6></div>
-                <div class="col_9">{{Level.CastTime}}</div>
-            </div>
-            <h5>Description</h5>
-            <div class="row"><div class="col_12">{{Level.Description|raw}}</div></div>
-        </div>
-<br />{% endfor %}
-
-{% for Level in Level5 %}
-        <div class="row" visibly="level:level5">
-            <h4>{{Level.Name}}</h4>
-            <div class="row">
-                <div class="col_3"><h6>Range</h6></div>
-                <div class="col_9">{{Level.CastRange}}</div>
-            </div>
-            <div class="row">
-                <div class="col_3"><h6>Duration</h6></div>
-                <div class="col_9">{{Level.Duration}}</div>
-            </div>
-            <div class="row">
-                <div class="col_3"><h6>Cast Time</h6></div>
-                <div class="col_9">{{Level.CastTime}}</div>
-            </div>
-            <h5>Description</h5>
-            <div class="row"><div class="col_12">{{Level.Description|raw}}</div></div>
-        </div>
-<br />{% endfor %}
-
-{% for Level in Level6 %}
-        <div class="row" visibly="level:level6">
-            <h4>{{Level.Name}}</h4>
-            <div class="row">
-                <div class="col_3"><h6>Range</h6></div>
-                <div class="col_9">{{Level.CastRange}}</div>
-            </div>
-            <div class="row">
-                <div class="col_3"><h6>Duration</h6></div>
-                <div class="col_9">{{Level.Duration}}</div>
-            </div>
-            <div class="row">
-                <div class="col_3"><h6>Cast Time</h6></div>
-                <div class="col_9">{{Level.CastTime}}</div>
-            </div>
-            <h5>Description</h5>
-            <div class="row"><div class="col_12">{{Level.Description|raw}}</div></div>
-        </div>
-<br />{% endfor %}
-
-{% for Level in Level7 %}
-        <div class="row" visibly="level:level7">
-            <h4>{{Level.Name}}</h4>
-            <div class="row">
-                <div class="col_3"><h6>Range</h6></div>
-                <div class="col_9">{{Level.CastRange}}</div>
-            </div>
-            <div class="row">
-                <div class="col_3"><h6>Duration</h6></div>
-                <div class="col_9">{{Level.Duration}}</div>
-            </div>
-            <div class="row">
-                <div class="col_3"><h6>Cast Time</h6></div>
-                <div class="col_9">{{Level.CastTime}}</div>
-            </div>
-            <h5>Description</h5>
-            <div class="row"><div class="col_12">{{Level.Description|raw}}</div></div>
-        </div>
-<br />{% endfor %}
-
-{% for Level in Level8 %}
-        <div class="row" visibly="level:level8">
-            <h4>{{Level.Name}}</h4>
-            <div class="row">
-                <div class="col_3"><h6>Range</h6></div>
-                <div class="col_9">{{Level.CastRange}}</div>
-            </div>
-            <div class="row">
-                <div class="col_3"><h6>Duration</h6></div>
-                <div class="col_9">{{Level.Duration}}</div>
-            </div>
-            <div class="row">
-                <div class="col_3"><h6>Cast Time</h6></div>
-                <div class="col_9">{{Level.CastTime}}</div>
-            </div>
-            <h5>Description</h5>
-            <div class="row"><div class="col_12">{{Level.Description|raw}}</div></div>
-        </div>
-<br />{% endfor %}
-
-{% for Level in Level9 %}
-        <div class="row" visibly="level:level9">
-            <h4>{{Level.Name}}</h4>
-            <div class="row">
-                <div class="col_3"><h6>Range</h6></div>
-                <div class="col_9">{{Level.CastRange}}</div>
-            </div>
-            <div class="row">
-                <div class="col_3"><h6>Duration</h6></div>
-                <div class="col_9">{{Level.Duration}}</div>
-            </div>
-            <div class="row">
-                <div class="col_3"><h6>Cast Time</h6></div>
-                <div class="col_9">{{Level.CastTime}}</div>
-            </div>
-            <h5>Description</h5>
-            <div class="row"><div class="col_12">{{Level.Description|raw}}</div></div>
-        </div>
-<br />{% endfor %}
+    </div>
+    {% endfor %}
+</div>

@@ -1,0 +1,33 @@
+<div class='row'>
+    <div class='col_2'><h6>Name</h6></div>
+</div>
+
+{% for A in JSON['compendium']['background'] %}
+    {% if A.source != "Player's Handbook" %}
+    {% else %}
+        <h4>{{A.name}} ({{A.source|replace({
+            "Player's Handbook": "PHB",
+            "Sword Coast Adventurer's Guide" : "SCAG",
+            "Curse of Strahd" : "CoS",
+            "Plane Shift Innistrad" : "PSI",
+            "Plane Shift Amonkhet" : "PSA",
+            "Tomb of Annihilation" : "ToA"
+            })}})</h4>
+        {% for B in A.trait %}
+            {% if B.name == "Personality Trait" %}
+            {% elseif B.name == "Ideal" %}
+            {% elseif B.name == "Bond" %}
+            {% elseif B.name == "Flaw" %}
+            {% elseif B.name == "Suggested Characteristics" %}
+            {% else %}
+            <div class='row'>
+                <div class='col_3'>{{B.name}}</div>
+                <div class='col_6'>
+                    {{B.text[0]}}
+                    <br />{{B.text[1]}}
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endfor %}
