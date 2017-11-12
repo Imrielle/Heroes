@@ -760,6 +760,34 @@ INSERT INTO `cms_class_skills` (`ID`, `class_id`, `class_skills`, `choices`) VAL
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cms_class_tools`
+--
+
+CREATE TABLE `cms_class_tools` (
+  `ID` int(11) NOT NULL,
+  `class_id` int(11) DEFAULT NULL,
+  `class_tools` varchar(100) DEFAULT NULL,
+  `tool_text` text NOT NULL,
+  `choices` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `cms_class_tools` (`ID`, `class_id`, `class_tools`, `tool_text`, `choices`) VALUES
+(1,1,'0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0',"None",0),
+(2,2,'0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0',"None",0),
+(3,3,'0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0',"Thieve's Tools",-1),
+(4,4,'0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0',"None",0),
+(5,5,'0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0',"None",0),
+(6,6,'0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|1|1|1|1|1|1|1|1|1|0|0|0|0|0',"Choose Three Instruments", 3),
+(7,7,'0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0',"Herbalism Kit",-1),
+(8,8,'1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|0|0|0|0|0|0|0|1|1|1|1|1|1|1|1|1|1|0|0|0|0|0',"Choose One Artisan Tool or Instrument",1),
+(9,9,'0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0',"None",0),
+(10,10,'0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0',"None",0),
+(11,11,'0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0',"None",0),
+(12,12,'0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0',"None",0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `cms_config`
 --
 
@@ -1779,7 +1807,7 @@ INSERT INTO `cms_races` (`ID`, `rName`, `rFullName`, `rSubName`, `rSize`, `rSpee
 (29, 'Half-Elf', 'HalfElf_Drow', 'Drow', 'M', 30, '0|0|0|0|0|2', '', 0, 'Common|Elvish|Choice', 'PHB', '1'),
 (30, 'Half-Elf', 'HalfElf_Aquatic', 'Aquatic', 'M', 30, '0|0|0|0|0|2', '', 0, 'Common|Elvish|Choice', 'PHB', '1'),
 (31, 'Halfling', 'Halfling_Ghostwise', 'Ghostwise', 'S', 25, '0|2|0|0|1|0', '', 0, 'Common|Halfling', 'PHB', '1'),
-(32, 'Bugbear', 'Bugbear', '', 'M', 30, '2|1|0|0|0|0', '', 0, 'Common|Goblin', 'VgtM', '1'),
+(32, 'Bugbear', 'Bugbear', '', 'M', 30, '2|1|0|0|0|0', '', 0, 'Common|Goblin', 'VgtM', '0'),
 (33, 'Aasimar', 'Aasimar_Fallen', 'Fallen', 'M', 30, '1|0|0|0|0|2', '', 0, 'Common|Celestial', 'VgtM', '1'),
 (34, 'Aasimar', 'Aasimar_Protector', 'Protector', 'M', 30, '0|0|0|0|1|2', '', 0, 'Common|Celestial', 'VgtM', '1'),
 (35, 'Aasimar', 'Aasimar_Scourge', 'Scourge', 'M', 30, '0|0|1|0|0|2', '', 0, 'Common|Celestial', 'VgtM', '1'),
@@ -2207,6 +2235,30 @@ ALTER TABLE `cms_classes`
 --
 ALTER TABLE `cms_class_armor_prof`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- Indexes for table `cms_class_skills`
+--
+ALTER TABLE `cms_class_skills`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `cms_class_tools`
+--
+ALTER TABLE `cms_class_tools`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- AUTO_INCREMENT for table `cms_class_skills`
+--
+ALTER TABLE `cms_class_skills`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `cms_class_tools`
+--
+ALTER TABLE `cms_class_tools`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `cms_config`
