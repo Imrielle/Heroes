@@ -16,9 +16,9 @@ $Stats[] = array("Name" => 'Charisma', "SName" => 'Cha');
 $AlgnS = array('LG', 'NG', 'CG', 'LN', 'NN', 'CN', 'LE', 'NE', 'CE');
 $AlgnL = array('Lawful Good', 'Neutral Good', 'Chaotic Good', 'Lawful Neutral', 'True Neutral', 'Chaotic Neutral', 'Lawful Evil', 'Neutral Evil', 'Chaotic Evil');
 
-$Classes = ReadInfo("*", "cms_classes", "", "all");
+$Classes = ReadInfo("*", "cms_classes", "ORDER BY `Name`", "all");
 $Races = ReadInfo("*", "cms_races", "WHERE `Active` = '1' ORDER BY `rName` ASC", "all");
-$Factions = ReadInfo("*", "cms_dnd_factions", 'ORDER BY `Name`', "all");
+$Factions = ReadInfo("*", "cms_dnd_factions", "ORDER BY `Name`", "all");
 
 //array_sort_by_column($Races, 'rName');
 
