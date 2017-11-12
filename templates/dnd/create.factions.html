@@ -12,11 +12,19 @@
     <div class="col_4">
         {% for Faction in Factions %}
         <div visibly="Faction:{{Faction.ID}}">
-            <img src="images/factions/{{Faction.ID}}.png" alt="Your image path is bad and you should feel bad." width="300" height="300">
-            <h5>"{{Faction.Name|raw}}"</h5>
-            <p>"{{Faction.Description|raw}}"</p>
-            <p>"{{Faction.Goals|raw}}"</p>
-            <p>"{{Faction.Beliefs|raw}}"</p>
+            <div class="row">
+                <div class="col_4">
+                  <img src="images/factions/{{Faction.ID}}.png" alt="Your image path is bad and you should feel bad." width="300" height="300">
+                </div>
+                <div class="col_8">
+                    <h5>"{{Faction.Name|raw}}"</h5>
+                    <p>"{{Faction.Description|raw}}"</p>
+                    <h5>"Goals"</h5>
+                    <p>"{{Faction.Goals|raw}}"</p>
+                    <h5>"Beliefs"</h5>
+                    <p>"{{Faction.Beliefs|raw}}"</p>
+                </div>
+            </div>
         </div>
         {% endfor %}
     </div>
