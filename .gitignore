@@ -1,0 +1,8 @@
+#This stuff should just be ignored... no exceptions.
+
+#config.php is used for the local server and should be ignored.
+config.php
+
+#data and temp files
+data/
+temp/
