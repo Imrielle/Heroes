@@ -738,9 +738,9 @@ INSERT INTO `cms_class_wpn_prof` (`class_id`, `wpn_type`, `wpn_id`, `wpn_prof_te
 
 CREATE TABLE `cms_class_skills` (
   `ID` int(11) NOT NULL,
-  `class_id` int(11) DEFAULT NULL,
-  `class_skills` varchar(50) DEFAULT NULL,
-  `choices` int(11) DEFAULT NULL
+  `class_id` int(11) NOT NULL,
+  `class_skills` varchar(50) NOT NULL,
+  `choices` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `cms_class_skills` (`ID`, `class_id`, `class_skills`, `choices`) VALUES
@@ -765,10 +765,10 @@ INSERT INTO `cms_class_skills` (`ID`, `class_id`, `class_skills`, `choices`) VAL
 
 CREATE TABLE `cms_class_tools` (
   `ID` int(11) NOT NULL,
-  `class_id` int(11) DEFAULT NULL,
-  `class_tools` varchar(100) DEFAULT NULL,
+  `class_id` int(11) NOT NULL,
+  `class_tools` varchar(100) NOT NULL,
   `tool_text` text NOT NULL,
-  `choices` int(11) DEFAULT NULL
+  `choices` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `cms_class_tools` (`ID`, `class_id`, `class_tools`, `tool_text`, `choices`) VALUES
@@ -890,7 +890,6 @@ CREATE TABLE `cms_dnd_languages` (
   `ID` int(11) NOT NULL,
   `Name` varchar(150) NOT NULL,
   `Type` varchar(100) NOT NULL,
-  `Script` varchar(100) NOT NULL,
   `Source` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -898,25 +897,43 @@ CREATE TABLE `cms_dnd_languages` (
 -- Dumping data for table `cms_dnd_languages`
 --
 
-INSERT INTO `cms_dnd_languages` (`ID`, `Name`, `Type`, `Script`, `Source`) VALUES
-(1, 'Common', 'Standard', 'Common', 'PHB'),
-(2, 'Dwarvish', 'Standard', 'Dwarvish', 'PHB'),
-(3, 'Elvish', 'Standard', 'Elvish', 'PHB'),
-(4, 'Giant', 'Standard', 'Dwarvish', 'PHB'),
-(5, 'Gnomish', 'Standard', 'Dwarvish', 'PHB'),
-(6, 'Goblin', 'Standard', 'Dwarvish', 'PHB'),
-(7, 'Halfling', 'Standard', 'Common', 'PHB'),
-(8, 'Orc', 'Standard', 'Dwarvish', 'PHB'),
-(9, 'Abyssal', 'Exotic', 'Infernal', 'PHB'),
-(10, 'Celestial', 'Exotic', 'Celestial', 'PHB'),
-(11, 'Draconic', 'Exotic', 'Draconic', 'PHB'),
-(12, 'Deep Speech', 'Exotic', '', 'PHB'),
-(13, 'Infernal', 'Exotic', 'Infernal', 'PHB'),
-(14, 'Primordial', 'Exotic', 'Dwarvish', 'PHB'),
-(15, 'Sylvan', 'Exotic', 'Elvish', 'PHB'),
-(16, 'Undercommon', 'Exotic', 'Elvish', 'PHB'),
-(17, 'Druidic', 'Class', '', 'PHB'),
-(18, 'Thieves\' Cant', 'Class', '', 'PHB');
+INSERT INTO `cms_dnd_languages` (`ID`, `Name`, `Type`, `Source`) VALUES
+(1, 'Common', 'Standard', 'PHB'),
+(2, 'Dwarvish', 'Standard', 'PHB'),
+(3, 'Elvish', 'Standard', 'PHB'),
+(4, 'Giant', 'Standard', 'PHB'),
+(5, 'Gnomish', 'Standard', 'PHB'),
+(6, 'Goblin', 'Standard', 'PHB'),
+(7, 'Halfling', 'Standard', 'PHB'),
+(8, 'Orc', 'Standard', 'PHB'),
+(9, 'Abyssal', 'Exotic', 'PHB'),
+(10, 'Celestial', 'Exotic', 'PHB'),
+(11, 'Draconic', 'Exotic', 'PHB'),
+(12, 'Deep Speech', 'Exotic', 'PHB'),
+(13, 'Infernal', 'Exotic', 'PHB'),
+(14, 'Primordial', 'Exotic', 'PHB'),
+(15, 'Sylvan', 'Exotic', 'PHB'),
+(16, 'Undercommon', 'Exotic', 'PHB'),
+(17, 'Druidic', 'Class', 'PHB'),
+(18, 'Thieves\' Cant', 'Class', 'PHB'),
+(19, 'Aarakocra', 'Race', 'EE'),
+(20, 'Aven', 'Race', 'PSA'),
+(21, 'Mimicry', 'Race', 'VgtM'),
+(22, 'Khenra', 'Race', 'PSA'),
+(23, 'Kor', 'Race', 'PSA'),
+(24, 'Silent Speech', 'Race', 'PSA'),
+(25, 'Merfolk', 'Race', 'PSZ'),
+(26, 'Merfolk', 'Race', 'PSZ'),
+(27, 'Minotaur', 'Race', 'PSZ'),
+(28, 'Naga', 'Race', 'PSA'),
+(29, 'Vampire', 'Race', 'PSA'),
+(30, 'Vampire', 'Race', 'PSA'),
+(31, 'Auran', 'Special', 'MM'),
+(32, 'Aquan', 'Special', 'MM'),
+(33, 'Ignan', 'Special', 'MM'),
+(34, 'Terran', 'Special', 'MM'),
+(35, 'All', 'Special', 'DMG'),
+(36, 'Telepathy', 'Special', 'DMG');
 
 -- --------------------------------------------------------
 
@@ -1794,73 +1811,163 @@ INSERT INTO `cms_races` (`ID`, `rName`, `rFullName`, `rSubName`, `rSize`, `rSpee
 (16, 'Human', 'Human_Variant', 'Variant', 'M', 30, '0|0|0|0|0|0', '', 0, 'Common|Choice', 'PHB', '0'),
 (17, 'Halfling', 'Halfling_Lightfoot', 'Lightfoot', 'S', 25, '0|2|0|0|0|1', '', 0, 'Common|Halfling', 'PHB', '1'),
 (18, 'Dwarf', 'Dwarf_Mountain', 'Mountain', 'M', 25, '2|0|2|0|0|0', '', 60, 'Common|Dwarvish', 'PHB', '1'),
-(19, 'Shifter', 'Shifter_Razorclaw', 'Razorclaw', 'M', 30, '0|2|0|0|0|0', '', 0, 'Common|Sylvan', 'UA', '0'),
-(20, 'Gnome', 'Gnome_Rock', 'Rock', 'S', 25, '0|0|1|2|0|0', '', 0, 'Common|Gnomish', 'PHB', '1'),
-(21, 'Halfling', 'Halfling_Stout', 'Stout', 'S', 25, '0|2|1|0|0|0', '', 0, 'Common|Halfling', 'PHB', '1'),
-(22, 'Tiefling', 'Tiefling_Infernal', 'Infernal', 'M', 30, '0|0|0|1|0|2', '', 0, 'Common|Infernal', 'PHB', '1'),
-(23, 'Genasi', 'Genasi_Water', 'Water', 'M', 30, '0|0|2|0|1|0', '', 0, 'Common|Primordial', 'EE', '1'),
-(24, 'Shifter', 'Shifter_Wildhunt', 'Wildhunt', 'M', 30, '0|1|0|0|1|0', '', 0, 'Common|Sylvan', 'UA', '0'),
-(25, 'Elf', 'Elf_Wood', 'Wood', 'M', 35, '0|2|0|0|1|0', '', 60, 'Common|Elvish', 'PHB', '1'),
-(26, 'Dwarf', 'Dwarf_Duergar', 'Duergar', 'M', 25, '1|0|2|0|0|0', '', 60, 'Common|Dwarvish|Undercommon', 'PHB', '1'),
-(27, 'Half-Elf', 'HalfElf_Wood', 'Wood', 'M', 30, '0|0|0|0|0|2', '', 0, 'Common|Elvish|Choice', 'PHB', '1'),
-(28, 'Half-Elf', 'HalfElf_MoonSun', 'Moon or Sun', 'M', 30, '0|0|0|0|0|2', '', 0, 'Common|Elvish|Choice', 'PHB', '1'),
-(29, 'Half-Elf', 'HalfElf_Drow', 'Drow', 'M', 30, '0|0|0|0|0|2', '', 0, 'Common|Elvish|Choice', 'PHB', '1'),
-(30, 'Half-Elf', 'HalfElf_Aquatic', 'Aquatic', 'M', 30, '0|0|0|0|0|2', '', 0, 'Common|Elvish|Choice', 'PHB', '1'),
-(31, 'Halfling', 'Halfling_Ghostwise', 'Ghostwise', 'S', 25, '0|2|0|0|1|0', '', 0, 'Common|Halfling', 'PHB', '1'),
-(32, 'Bugbear', 'Bugbear', '', 'M', 30, '2|1|0|0|0|0', '', 0, 'Common|Goblin', 'VgtM', '0'),
-(33, 'Aasimar', 'Aasimar_Fallen', 'Fallen', 'M', 30, '1|0|0|0|0|2', '', 0, 'Common|Celestial', 'VgtM', '1'),
-(34, 'Aasimar', 'Aasimar_Protector', 'Protector', 'M', 30, '0|0|0|0|1|2', '', 0, 'Common|Celestial', 'VgtM', '1'),
-(35, 'Aasimar', 'Aasimar_Scourge', 'Scourge', 'M', 30, '0|0|1|0|0|2', '', 0, 'Common|Celestial', 'VgtM', '1'),
-(36, 'Firbolg', 'Firbolg', '', 'M', 30, '1|0|0|0|2|0', '', 0, 'Common|Elvish|Giant', 'VgtM', '0'),
-(37, 'Goblin', 'Goblin', '', 'S', 30, '0|2|1|0|0|0', '', 0, 'Common|Goblin', 'VgtM', '0'),
-(38, 'Hobgoblin', 'Hobgoblin', '', 'M', 30, '0|0|2|1|0|0', '', 0, 'Common|Goblin', 'VgtM', '0'),
-(39, 'Kenku', 'Kenku', '', 'M', 30, '0|2|0|0|1|0', '', 0, 'Kenku|Mimicry', 'VgtM', '0'),
-(40, 'Kobold', 'Kobold', '', 'S', 30, '-2|2|0|0|0|0', '', 0, 'Common|Draconic', 'VgtM', '0'),
-(41, 'Lizardfolk', 'Lizardfolk', '', 'M', 30, '0|0|2|0|1|0', '', 0, 'Common|Draconic', 'VgtM', '0'),
-(42, 'Orc', 'Orc', '', 'M', 30, '2|0|0|0|0|0', '', 0, 'Common|Orc', 'VgtM', '0'),
-(43, 'Tabaxi', 'Tabaxi', '', 'M', 30, '0|2|0|0|0|1', '', 0, 'Common|Choice', 'VgtM', '0'),
-(44, 'Triton', 'Triton', '', 'M', 30, '1|0|0|0|0|0', '', 0, 'Common|Primordial', 'VgtM', '0'),
-(45, 'Yuan-ti Pureblood', 'Yuanti_Pureblood', '', 'M', 30, '0|0|0|1|0|2', '', 0, 'Common|Abyssal|Draconic', 'VgtM', '0'),
-(47, 'Aasimar', 'Aasimar', '', 'M', 30, '0|0|0|0|1|2', '', 60, 'Common|Celestial', 'DMG', '0'),
-(51, 'Aetherborn', 'Aetherborn', '', 'M', 30, '0|0|0|0|0|2', '', 60, 'Common|Choice2', 'PSK', '0'),
-(52, 'Aven', 'Aven_Ibisheaded', 'Ibis-Headed', 'M', 25, '0|2|0|1|0|0', '', 0, 'Common|Aven', 'PSA', '0'),
-(53, 'Aven', 'Aven_Hawkheaded', 'Hawk-Headed', 'M', 25, '0|2|0|0|2|0', '', 0, 'Common|Aven', 'PSA', '0'),
-(55, 'Changeling', 'Changeling', '', 'M', 30, '0|1|0|0|0|1', '', 0, 'Common|Choice2', 'UA', '0'),
-(57, 'Dwarf', 'Dwarf', '', 'M', 25, '0|0|2|0|1|0', '', 60, 'Common|Dwarvish', 'PSK', '0'),
-(61, 'Dwarf', 'Dwarf_Revenant', 'Revenant', 'M', 25, '0|0|3|0|0|0', '', 60, 'Common|Dwarvish', 'UA', '0'),
-(65, 'Elf', 'Elf_Revenant', 'Revenant', 'M', 30, '0|2|1|0|0|0', '', 60, 'Common|Elvish', 'UA', '0'),
-(66, 'Elf', 'Elf_Vahadar', 'Vahadar', 'M', 30, '0|2|0|0|1|0', '', 60, 'Common|Elvish|Choice', 'PSK', '0'),
-(68, 'Elf', 'Elf_Tajuru', 'Tajuru', 'M', 30, '0|0|0|0|2|1', '', 60, 'Common|Elvish', 'PSZ', '0'),
-(69, 'Elf', 'Elf_Joraga', 'Joraga', 'M', 35, '0|1|0|0|2|0', '', 60, 'Common|Elvish', 'PSZ', '0'),
-(70, 'Elf', 'Elf_Mul Daya', 'Mul Daya', 'M', 30, '1|0|0|0|2|0', '', 120, 'Common|Elvish', 'PSZ', '0'),
-(78, 'Gnome', 'Gnome_Revenant', 'Revenant', 'S', 25, '0|0|1|2|0|0', '', 60, 'Common|Gnomish', 'UA', '0'),
-(81, 'Goblin', 'Goblin_Grotag', 'Grotag', 'S', 25, '0|0|2|0|0|0', '', 60, 'Common|Goblin', 'PSZ', '0'),
-(82, 'Goblin', 'Goblin_Lavastep', 'lavastep', 'S', 25, '0|0|2|0|0|0', '', 60, 'Common|Goblin', 'PSZ', '0'),
-(83, 'Goblin', 'Goblin_Tuktuk', 'Tuktuk', 'S', 25, '0|0|2|0|0|0', '', 60, 'Common|Goblin', 'PSZ', '0'),
-(88, 'Halfling', 'Halfling_Revenant', 'Revenant', 'S', 25, '0|2|1|0|0|0', '', 0, 'Common|Halfling', 'UA', '0'),
-(96, 'Human', 'Human_Kessig', 'Kessig', 'M', 40, '0|1|0|0|1|0', '', 0, 'Common|Choice', 'PSI', '0'),
-(97, 'Human', 'Human_Nephalia', 'Nephalia', 'M', 30, '0|0|0|1|0|1', '', 0, 'Common|Choice', 'PSI', '0'),
-(99, 'Human', 'Human_Revenant', 'Revenant', 'M', 30, '0|0|0|0|0|0', '', 0, 'Common|Choice', 'PHB', '0'),
-(100, 'Human', 'Human_Stensia', 'Stensia', 'M', 30, '1|0|1|0|0|0', '', 0, 'Common|Choice', 'PSI', '0'),
-(103, 'Khenra', 'Khenra', '', 'M', 35, '1|2|0|0|0|0', '', 0, 'Common|Khenra', 'PSA', '0'),
-(105, 'Kor', 'Kor', '', 'M', 30, '0|2|0|0|1|0', '', 0, 'Kor|Silent Speech', 'PSZ', '0'),
-(107, 'Merfolk', 'Merfolk_Cosi', 'Cosi', 'M', 30, '0|0|0|1|0|2', '', 0, 'Common|Merfolk|Choice', 'PSZ', '0'),
-(108, 'Merfolk', 'Merfolk_Wind_Emeria', 'Wind (Emeria)', 'M', 30, '0|0|0|0|2|1', '', 0, 'Common|Merfolk|Choice', 'PSZ', '0'),
-(109, 'Merfolk', 'Merfolk_Water_Ula', 'Water (Ula)', 'M', 30, '0|0|0|2|0|1', '', 0, 'Common|Merfolk|Choice', 'PSZ', '0'),
-(110, 'Minotaur', 'Minotaur_Krynn', 'Krynn', 'M', 30, '1|0|0|0|0|0', '', 0, 'Common', 'UA', '0'),
-(111, 'Minotaur', 'Minotaur', '', 'M', 30, '2|0|1|0|0|0', '', 0, 'Common|Minotaur', 'PSA', '0'),
-(112, 'Naga', 'Naga', '', 'M', 30, '0|0|2|1|0|0', '', 0, 'Common|Naga', 'PSA', '0'),
-(114, 'Shifter', 'Shifter_Beasthide', 'Beasthide', 'M', 30, '0|1|1|0|0|0', '', 60, 'Common|Sylvan', 'UA', '0'),
-(115, 'Shifter', 'Shifter_Cliffwalk', 'Cliffwalk', 'M', 30, '0|2|0|0|0|0', '', 60, 'Common|Sylvan', 'UA', '0'),
-(116, 'Shifter', 'Shifter_Longstride', 'Longstride', 'M', 30, '0|2|0|0|0|0', '', 60, 'Common|Sylvan', 'UA', '0'),
-(117, 'Shifter', 'Shifter_Longtooth', 'Longtooth', 'M', 30, '1|1|0|0|0|0', '', 60, 'Common|Sylvan', 'UA', '0'),
-(121, 'Tiefling', 'Tiefling_Abyssal', 'Abyssal', 'M', 30, '0|0|1|0|0|2', '', 60, 'Common|Abyssal', 'UA', '1'),
-(122, 'Tiefling', 'Tiefling_Feral', 'Feral', 'M', 30, '0|2|0|1|0|0', '', 60, 'Common|Infernal', 'SCAG', '1'),
-(124, 'Tiefling', 'Tiefling_Revenant', 'Revenant', 'M', 30, '0|0|1|0|0|2', '', 60, 'Common', 'UA', '0'),
-(125, 'Tiefling', 'Tiefling_Variant', 'Variant', 'M', 30, '0|0|0|0|0|0', '', 60, 'Common|Infernal', 'SCAG', '0'),
-(127, 'Vampire', 'Vampire', '', 'M', 30, '0|0|0|1|0|2', '', 60, 'Common|Vampire', 'PSZ', '0'),
-(128, 'Vedalken', 'Vedalken', '', 'M', 30, '0|0|0|2|0|0', '', 0, 'Common|Vedalken', 'PSK', '0'),
-(129, 'Warforged', 'Warforged', '', 'M', 30, '1|0|1|0|0|0', '', 0, 'Common|Choice', 'UA', '0');
+(19, 'Gnome', 'Gnome_Rock', 'Rock', 'S', 25, '0|0|1|2|0|0', '', 0, 'Common|Gnomish', 'PHB', '1'),
+(20, 'Halfling', 'Halfling_Stout', 'Stout', 'S', 25, '0|2|1|0|0|0', '', 0, 'Common|Halfling', 'PHB', '1'),
+(21, 'Tiefling', 'Tiefling_Infernal', 'Infernal', 'M', 30, '0|0|0|1|0|2', '', 0, 'Common|Infernal', 'PHB', '1'),
+(22, 'Genasi', 'Genasi_Water', 'Water', 'M', 30, '0|0|2|0|1|0', '', 0, 'Common|Primordial', 'EE', '1'),
+(23, 'Elf', 'Elf_Wood', 'Wood', 'M', 35, '0|2|0|0|1|0', '', 60, 'Common|Elvish', 'PHB', '1'),
+(24, 'Dwarf', 'Dwarf_Duergar', 'Duergar', 'M', 25, '1|0|2|0|0|0', '', 60, 'Common|Dwarvish|Undercommon', 'PHB', '1'),
+(25, 'Half-Elf', 'HalfElf_Wood', 'Wood', 'M', 30, '0|0|0|0|0|2', '', 0, 'Common|Elvish|Choice', 'PHB', '1'),
+(26, 'Half-Elf', 'HalfElf_MoonSun', 'Moon or Sun', 'M', 30, '0|0|0|0|0|2', '', 0, 'Common|Elvish|Choice', 'PHB', '1'),
+(27, 'Half-Elf', 'HalfElf_Drow', 'Drow', 'M', 30, '0|0|0|0|0|2', '', 0, 'Common|Elvish|Choice', 'PHB', '1'),
+(28, 'Half-Elf', 'HalfElf_Aquatic', 'Aquatic', 'M', 30, '0|0|0|0|0|2', '', 0, 'Common|Elvish|Choice', 'PHB', '1'),
+(29, 'Halfling', 'Halfling_Ghostwise', 'Ghostwise', 'S', 25, '0|2|0|0|1|0', '', 0, 'Common|Halfling|Silent Speech', 'PHB', '1'),
+(30, 'Bugbear', 'Bugbear', '', 'M', 30, '2|1|0|0|0|0', '', 0, 'Common|Goblin', 'VgtM', '0'),
+(31, 'Aasimar', 'Aasimar_Fallen', 'Fallen', 'M', 30, '1|0|0|0|0|2', '', 0, 'Common|Celestial', 'VgtM', '1'),
+(32, 'Aasimar', 'Aasimar_Protector', 'Protector', 'M', 30, '0|0|0|0|1|2', '', 0, 'Common|Celestial', 'VgtM', '1'),
+(33, 'Aasimar', 'Aasimar_Scourge', 'Scourge', 'M', 30, '0|0|1|0|0|2', '', 0, 'Common|Celestial', 'VgtM', '1'),
+(34, 'Firbolg', 'Firbolg', '', 'M', 30, '1|0|0|0|2|0', '', 0, 'Common|Elvish|Giant', 'VgtM', '0'),
+(35, 'Goblin', 'Goblin', '', 'S', 30, '0|2|1|0|0|0', '', 0, 'Common|Goblin', 'VgtM', '0'),
+(36, 'Hobgoblin', 'Hobgoblin', '', 'M', 30, '0|0|2|1|0|0', '', 0, 'Common|Goblin', 'VgtM', '0'),
+(37, 'Kenku', 'Kenku', '', 'M', 30, '0|2|0|0|1|0', '', 0, 'Common|Auran|Mimicry', 'VgtM', '0'),
+(38, 'Kobold', 'Kobold', '', 'S', 30, '-2|2|0|0|0|0', '', 0, 'Common|Draconic', 'VgtM', '0'),
+(39, 'Lizardfolk', 'Lizardfolk', '', 'M', 30, '0|0|2|0|1|0', '', 0, 'Common|Draconic', 'VgtM', '0'),
+(40, 'Orc', 'Orc', '', 'M', 30, '2|0|0|0|0|0', '', 0, 'Common|Orc', 'VgtM', '0'),
+(42, 'Tabaxi', 'Tabaxi', '', 'M', 30, '0|2|0|0|0|1', '', 0, 'Common|Choice', 'VgtM', '0'),
+(43, 'Triton', 'Triton', '', 'M', 30, '1|0|0|0|0|0', '', 0, 'Common|Primordial', 'VgtM', '0'),
+(44, 'Yuan-ti Pureblood', 'Yuanti_Pureblood', '', 'M', 30, '0|0|0|1|0|2', '', 0, 'Common|Abyssal|Draconic', 'VgtM', '0'),
+(45, 'Tiefling', 'Tiefling_Abyssal', 'Abyssal', 'M', 30, '0|0|1|0|0|2', '', 60, 'Common|Abyssal', 'UA', '0'),
+(46, 'Tiefling', 'Tiefling_Feral', 'Feral', 'M', 30, '0|2|0|1|0|0', '', 60, 'Common|Infernal', 'SCAG', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cms_races_skills`
+--
+
+CREATE TABLE `cms_race_skills` (
+  `ID` int(11) NOT NULL,
+  `rID` int(11) NOT NULL,
+  `rFullName` varchar(200) NOT NULL,
+  `rSkills` varchar(200) NOT NULL,
+  `Choices` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cms_races_skills`
+--
+
+INSERT INTO `cms_race_skills` (`ID`, `rID`, `rFullName`, `rSkills`, `Choices` ) VALUES
+(1, 1, 'Aarakocra', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(2, 2, 'Genasi_Air', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(3, 3, 'Elf_Drow', '0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0', -1),
+(4, 4, 'Gnome_Deep', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(5, 5, 'Dragonborn', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(6, 6, 'Genasi_Earth', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(7, 7, 'Elf_Eladrin', '0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0', -1),
+(8, 8, 'Genasi_Fire', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(9, 9, 'Gnome_Forest', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(10, 10, 'Goliath', '0|0|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(11, 11, 'HalfElf', '1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1', 2),
+(12, 12, 'HalfOrc', '0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0', -1),
+(13, 13, 'Elf_High', '0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0', -1),
+(14, 14, 'Dwarf_Hill', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(15, 15, 'Human', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(16, 16, 'Human Variant', '1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1', 1),
+(17, 17, 'Halfling_Lightfoot', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(18, 18, 'Dwarf_Mountain', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(19, 19, 'Gnome_Rock', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(20, 20, 'Halfling_Stout', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(21, 21, 'Tiefling_Infernal', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(22, 22, 'Genasi_Water', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(23, 23, 'Elf_Wood', '0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0', -1),
+(24, 24, 'Dwarf_Duergar', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(25, 25, 'HalfElf_Wood', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(26, 26, 'HalfElf_MoonSun', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(27, 27, 'HalfElf_Drow', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(28, 28, 'HalfElf_Aquatic', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(29, 29, 'Halfling_Ghostwise', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(30, 30, 'Bugbear', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0', -1),
+(31, 31, 'Aasimar_Fallen', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(32, 32, 'Aasimar_Protector', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(33, 33, 'Aasimar_Scourge', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(34, 34, 'Firbolg', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(35, 35, 'Goblin', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(36, 36, 'Hobgoblin', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(37, 37, 'Kenku', '1|0|0|0|1|0|0|0|0|0|0|0|0|0|0|1|1|0', 2),
+(38, 38, 'Kobold', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(39, 39, 'Lizardfolk', '0|1|0|0|0|0|0|0|0|0|1|1|0|0|0|0|1|1', 2),
+(40, 40, 'Orc', '0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0', -1),
+(41, 41, 'Tabaxi', '0|0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|1|0', -1),
+(42, 42, 'Triton', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(43, 43, 'Yuanti_Pureblood', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(44, 44, 'Tiefling_Abyssal', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(45, 45, 'Tiefling_Feral', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cms_races_tools`
+--
+
+CREATE TABLE `cms_race_tools` (
+  `ID` int(11) NOT NULL,
+  `rID` int(11) NOT NULL,
+  `rFullName` varchar(200) NOT NULL,
+  `rTools` varchar(200) NOT NULL,
+  `Choices` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cms_races_tools`
+--
+
+INSERT INTO `cms_race_tools` (`ID`, `rID`, `rFullName`, `rTools`, `Choices` ) VALUES
+(1, 1, 'Aarakocra', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(2, 2, 'Genasi_Air', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(3, 3, 'Elf_Drow', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(4, 4, 'Gnome_Deep', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(5, 5, 'Dragonborn', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(6, 6, 'Genasi_Earth', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(7, 7, 'Elf_Eladrin', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(8, 8, 'Genasi_Fire', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(9, 9, 'Gnome_Forest', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(10, 10, 'Goliath', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(11, 11, 'HalfElf', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(12, 12, 'HalfOrc', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(13, 13, 'Elf_High', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(14, 14, 'Dwarf_Hill', '0|1|0|0|0|0|0|0|0|0|1|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', 1),
+(15, 15, 'Human', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(16, 16, 'Human Variant', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(17, 17, 'Halfling_Lightfoot', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(18, 18, 'Dwarf_Mountain', '0|1|0|0|0|0|0|0|0|0|1|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', 1),
+(19, 19, 'Gnome_Rock', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(20, 20, 'Halfling_Stout', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(21, 21, 'Tiefling_Infernal', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(22, 22, 'Genasi_Water', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(23, 23, 'Elf_Wood', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(24, 24, 'Dwarf_Duergar', '0|1|0|0|0|0|0|0|0|0|1|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', 1),
+(25, 25, 'HalfElf_Wood', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(26, 26, 'HalfElf_MoonSun', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(27, 27, 'HalfElf_Drow', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(28, 28, 'HalfElf_Aquatic', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(29, 29, 'Halfling_Ghostwise', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(30, 30, 'Bugbear', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(31, 31, 'Aasimar_Fallen', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(32, 32, 'Aasimar_Protector', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(33, 33, 'Aasimar_Scourge', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(34, 34, 'Firbolg', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(35, 35, 'Goblin', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(36, 36, 'Hobgoblin', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(37, 37, 'Kenku', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(38, 38, 'Kobold', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(39, 39, 'Lizardfolk', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(40, 40, 'Orc', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(41, 41, 'Tabaxi', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(42, 42, 'Triton', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(43, 43, 'Yuanti_Pureblood', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(44, 44, 'Tiefling_Abyssal', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1),
+(45, 45, 'Tiefling_Feral', '0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', -1);
 
 -- --------------------------------------------------------
 
@@ -2248,16 +2355,28 @@ ALTER TABLE `cms_class_skills`
 ALTER TABLE `cms_class_tools`
   ADD PRIMARY KEY (`ID`);
 
+  --
+  -- Indexes for table `cms_race_skills`
+  --
+  ALTER TABLE `cms_race_skills`
+    ADD PRIMARY KEY (`ID`);
+
+  --
+  -- Indexes for table `cms_race_tools`
+  --
+  ALTER TABLE `cms_race_tools`
+    ADD PRIMARY KEY (`ID`);
+
 --
--- AUTO_INCREMENT for table `cms_class_skills`
+-- AUTO_INCREMENT for table `cms_race_skills`
 --
-ALTER TABLE `cms_class_skills`
+ALTER TABLE `cms_race_skills`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `cms_class_tools`
+-- AUTO_INCREMENT for table `cms_race_tools`
 --
-ALTER TABLE `cms_class_tools`
+ALTER TABLE `cms_race_tools`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --

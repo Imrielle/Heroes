@@ -12,7 +12,12 @@ $Ideals = ReadInfo("*", "cms_bg_ideals", "", "all");
 $Traits = ReadInfo("*", "cms_bg_traits", "", "all");
 $Skills = ReadInfo("*", "cms_dnd_skills", "", "all");
 $BGSkills = ReadInfo("*", "cms_bg_skills", "", "all");
-$ClassSkills = ReadInfo("*", "cms_class_skills", '', "all");
+$ClassSkills = ReadInfo("*", "cms_class_skills", "", "all");
+$RaceSkills = ReadInfo("*", "cms_class_skills", "", "all");
+$Tools = ReadInfo("*", "cms_dnd_tools", "", "all");
+//$BGSkills = ReadInfo("*", "cms_bg_tools", "", "all");
+$ClassTools = ReadInfo("*", "cms_class_skills", "", "all");
+$RaceTools = ReadInfo("*", "cms_race_tools", "", "all");
 
 if (isset($_POST['AddChar'])) {
     $stmt = $dbh->prepare('INSERT INTO cms_dnd_char (
@@ -49,3 +54,8 @@ $twig->addGlobal('Traits', $Traits);
 $twig->addGlobal('Skills', $Skills);
 $twig->addGlobal('BGSkills', $BGSkills);
 $twig->addGlobal('ClassSkills', $ClassSkills);
+$twig->addGlobal('RaceSkills', $RaceSkills);
+$twig->addGlobal('Tools', $Tools);
+//$twig->addGlobal('BGTools', $BGTools);
+$twig->addGlobal('ClassTools', $ClassTools);
+$twig->addGlobal('RaceTools', $RaceTools);
