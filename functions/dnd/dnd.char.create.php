@@ -15,8 +15,8 @@ $BGSkills = ReadInfo("*", "cms_bg_skills", "", "all");
 $ClassSkills = ReadInfo("*", "cms_class_skills", "", "all");
 $RaceSkills = ReadInfo("*", "cms_class_skills", "", "all");
 $Tools = ReadInfo("*", "cms_dnd_tools", "", "all");
-//$BGSkills = ReadInfo("*", "cms_bg_tools", "", "all");
-$ClassTools = ReadInfo("*", "cms_class_skills", "", "all");
+$BGSkills = ReadInfo("*", "cms_bg_tools", "", "all");
+$ClassTools = ReadInfo("*", "cms_class_tools", "", "all");
 $RaceTools = ReadInfo("*", "cms_race_tools", "", "all");
 
 if (isset($_POST['AddChar'])) {
@@ -56,6 +56,6 @@ $twig->addGlobal('BGSkills', $BGSkills);
 $twig->addGlobal('ClassSkills', $ClassSkills);
 $twig->addGlobal('RaceSkills', $RaceSkills);
 $twig->addGlobal('Tools', $Tools);
-//$twig->addGlobal('BGTools', $BGTools);
+$twig->addGlobal('BGTools', $BGTools);
 $twig->addGlobal('ClassTools', $ClassTools);
 $twig->addGlobal('RaceTools', $RaceTools);
