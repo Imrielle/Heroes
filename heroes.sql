@@ -442,8 +442,8 @@ INSERT INTO `cms_bg_skills` (`ID`, `bg_id`, `skill_id`) VALUES
 CREATE TABLE `cms_bg_tools` (
   `ID` int(11) NOT NULL,
   `bg_id` int(11) NOT NULL,
-  `bg_tools` varchar(500) NOT NULL,
-  `choices` int(11) NOT NULL,
+  `bg_tools` varchar(200) NOT NULL,
+  `choices` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
