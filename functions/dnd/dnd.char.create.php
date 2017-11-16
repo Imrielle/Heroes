@@ -15,7 +15,7 @@ $BGSkills = ReadInfo("*", "cms_bg_skills", "", "all");
 $ClassSkills = ReadInfo("*", "cms_class_skills", "", "all");
 $RaceSkills = ReadInfo("*", "cms_class_skills", "", "all");
 $Tools = ReadInfo("*", "cms_dnd_tools", "", "all");
-$BGSkills = ReadInfo("*", "cms_bg_tools", "", "all");
+$BGTools = ReadInfo("*", "cms_bg_tools", "", "all");
 $ClassTools = ReadInfo("*", "cms_class_tools", "", "all");
 $RaceTools = ReadInfo("*", "cms_race_tools", "", "all");
 
