@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2017 at 06:27 PM
+-- Generation Time: Nov 17, 2017 at 09:46 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.0.25
 
@@ -868,6 +868,52 @@ INSERT INTO `cms_class_druid_circle_land` (`ID`, `Druid_Circle`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cms_class_generic_spellslots`
+--
+
+CREATE TABLE `cms_class_generic_spellslots` (
+  `ID` int(11) NOT NULL,
+  `Class_Levels` int(11) NOT NULL,
+  `1st-Level` int(11) DEFAULT NULL,
+  `2nd-Level` int(11) DEFAULT NULL,
+  `3rd-Level` int(11) DEFAULT NULL,
+  `4th-Level` int(11) DEFAULT NULL,
+  `5th-Level` int(11) DEFAULT NULL,
+  `6th-Level` int(11) DEFAULT NULL,
+  `7th-Level` int(11) DEFAULT NULL,
+  `8th-Level` int(11) DEFAULT NULL,
+  `9th-Level` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cms_class_generic_spellslots`
+--
+
+INSERT INTO `cms_class_generic_spellslots` (`ID`, `Class_Levels`, `1st-Level`, `2nd-Level`, `3rd-Level`, `4th-Level`, `5th-Level`, `6th-Level`, `7th-Level`, `8th-Level`, `9th-Level`) VALUES
+(1, 1, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 2, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 3, 4, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, 4, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 5, 4, 3, 2, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 6, 4, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, 7, 4, 3, 3, 1, NULL, NULL, NULL, NULL, NULL),
+(8, 8, 4, 3, 3, 2, NULL, NULL, NULL, NULL, NULL),
+(9, 9, 4, 3, 3, 3, 1, NULL, NULL, NULL, NULL),
+(10, 10, 4, 3, 3, 3, 2, NULL, NULL, NULL, NULL),
+(11, 11, 4, 3, 3, 3, 2, 1, NULL, NULL, NULL),
+(12, 12, 4, 3, 3, 3, 2, 1, NULL, NULL, NULL),
+(13, 13, 4, 3, 3, 3, 2, 1, 1, NULL, NULL),
+(14, 14, 4, 3, 3, 3, 2, 1, 1, NULL, NULL),
+(15, 15, 4, 3, 3, 3, 2, 1, 1, 1, NULL),
+(16, 16, 4, 3, 3, 3, 2, 1, 1, 1, NULL),
+(17, 17, 4, 3, 3, 3, 2, 1, 1, 1, 1),
+(18, 18, 4, 3, 3, 3, 3, 1, 1, 1, 1),
+(19, 19, 4, 3, 3, 3, 3, 2, 1, 1, 1),
+(20, 20, 4, 3, 3, 3, 3, 2, 2, 1, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `cms_class_monk_bonus`
 --
 
@@ -940,6 +986,31 @@ INSERT INTO `cms_class_monk_elemental_disciplines` (`ID`, `Req_Level`, `Name`, `
 (15, 1, 'Sweeping Cinder Strike', 2),
 (16, 1, 'Water Whip', 2),
 (17, 17, 'Wave of Rolling Earth', 6);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cms_class_paladin_sacred_oaths`
+--
+
+CREATE TABLE `cms_class_paladin_sacred_oaths` (
+  `ID` int(11) NOT NULL,
+  `Oath` varchar(50) NOT NULL,
+  `Tenets` text NOT NULL,
+  `Channel Divinity` varchar(50) NOT NULL,
+  `Channel Divinity 2` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cms_class_paladin_sacred_oaths`
+--
+
+INSERT INTO `cms_class_paladin_sacred_oaths` (`ID`, `Oath`, `Tenets`, `Channel Divinity`, `Channel Divinity 2`) VALUES
+(1, 'Devotion', 'Honesty, Courage, Compassion, Honor, and Duty', 'Sacred Weapon', 'Turn the Unholy'),
+(2, 'Ancients', 'Kindle the Light, Shelter the Light, Preserve Your Own Light, and Be the Light.', 'Nature\'s Wrath', 'Turn the Faithless'),
+(3, 'Vengence', 'Fight the Greater Evil, No Mercy for the Wicked, By Any Means Necessary, and Restitution.', 'Abjure Enemy', 'Vow of Enmity'),
+(4, 'Crown', 'Law, Loyalty, Courage, and Responsibilty', 'Champion Challenge', 'Turn the Tide'),
+(5, 'Oathbreaker', 'What have you done! You should seek out atonement immediately.', 'Control Undead', 'Dreadful Aspect');
 
 -- --------------------------------------------------------
 
@@ -1661,38 +1732,37 @@ INSERT INTO `cms_class_warlock_invocations` (`ID`, `Name`, `Blast_Invocation`, `
 CREATE TABLE `cms_class_warlock_pactmagic` (
   `ID` int(11) NOT NULL,
   `Warlock_Level` int(11) NOT NULL,
-  `Cantrips` int(11) NOT NULL,
-  `Spells Known` int(11) NOT NULL,
+  `Spells` int(11) NOT NULL,
   `Spell Slots` int(11) NOT NULL,
   `Slot Level` varchar(50) NOT NULL,
-  `invocations Known` int(11) DEFAULT NULL
+  `Invocations` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `cms_class_warlock_pactmagic`
 --
 
-INSERT INTO `cms_class_warlock_pactmagic` (`ID`, `Warlock_Level`, `Cantrips`, `Spells Known`, `Spell Slots`, `Slot Level`, `invocations Known`) VALUES
-(1, 1, 2, 2, 1, '1st-Level', NULL),
-(2, 2, 2, 3, 2, '1st-Level', 2),
-(3, 3, 2, 4, 2, '2nd-Level', 2),
-(4, 4, 3, 5, 2, '2nd-Level', 2),
-(5, 5, 3, 6, 2, '3rd-Level', 3),
-(6, 6, 3, 7, 2, '3rd-Level', 3),
-(7, 7, 3, 8, 2, '4th-Level', 4),
-(8, 8, 3, 9, 2, '4th-Level', 4),
-(9, 9, 3, 10, 2, '5th-Level', 5),
-(10, 10, 4, 10, 2, '5th-Level', 5),
-(11, 11, 4, 11, 3, '5th-Level', 5),
-(12, 12, 4, 11, 3, '5th-Level', 6),
-(13, 13, 4, 12, 3, '5th-Level', 6),
-(14, 14, 4, 12, 3, '5th-Level', 6),
-(15, 15, 4, 13, 3, '5th-Level', 7),
-(16, 16, 4, 13, 3, '5th-Level', 7),
-(17, 17, 4, 14, 4, '5th-Level', 7),
-(18, 18, 4, 14, 4, '5th-Level', 8),
-(19, 19, 4, 15, 4, '5th-Level', 8),
-(20, 20, 4, 15, 4, '5th-Level', 8);
+INSERT INTO `cms_class_warlock_pactmagic` (`ID`, `Warlock_Level`, `Spells`, `Spell Slots`, `Slot Level`, `Invocations`) VALUES
+(1, 1, 2, 1, '1st-Level', NULL),
+(2, 2, 3, 2, '1st-Level', 2),
+(3, 3, 4, 2, '2nd-Level', 2),
+(4, 4, 5, 2, '2nd-Level', 2),
+(5, 5, 6, 2, '3rd-Level', 3),
+(6, 6, 7, 2, '3rd-Level', 3),
+(7, 7, 8, 2, '4th-Level', 4),
+(8, 8, 9, 2, '4th-Level', 4),
+(9, 9, 10, 2, '5th-Level', 5),
+(10, 10, 10, 2, '5th-Level', 5),
+(11, 11, 11, 3, '5th-Level', 5),
+(12, 12, 11, 3, '5th-Level', 6),
+(13, 13, 12, 3, '5th-Level', 6),
+(14, 14, 12, 3, '5th-Level', 6),
+(15, 15, 13, 3, '5th-Level', 7),
+(16, 16, 13, 3, '5th-Level', 7),
+(17, 17, 14, 4, '5th-Level', 7),
+(18, 18, 14, 4, '5th-Level', 8),
+(19, 19, 15, 4, '5th-Level', 8),
+(20, 20, 15, 4, '5th-Level', 8);
 
 -- --------------------------------------------------------
 
@@ -2803,31 +2873,6 @@ INSERT INTO `cms_menu_sub` (`ID`, `Name`, `Parent`, `Link`, `File`, `Status`, `I
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cms_paladin_sacred_oaths`
---
-
-CREATE TABLE `cms_paladin_sacred_oaths` (
-  `ID` int(11) NOT NULL,
-  `Oath` varchar(50) NOT NULL,
-  `Tenets` text NOT NULL,
-  `Channel Divinity` varchar(50) NOT NULL,
-  `Channel Divinity 2` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `cms_paladin_sacred_oaths`
---
-
-INSERT INTO `cms_paladin_sacred_oaths` (`ID`, `Oath`, `Tenets`, `Channel Divinity`, `Channel Divinity 2`) VALUES
-(1, 'Devotion', 'Honesty, Courage, Compassion, Honor, and Duty', 'Sacred Weapon', 'Turn the Unholy'),
-(2, 'Ancients', 'Kindle the Light, Shelter the Light, Preserve Your Own Light, and Be the Light.', 'Nature\'s Wrath', 'Turn the Faithless'),
-(3, 'Vengence', 'Fight the Greater Evil, No Mercy for the Wicked, By Any Means Necessary, and Restitution.', 'Abjure Enemy', 'Vow of Enmity'),
-(4, 'Crown', 'Law, Loyalty, Courage, and Responsibilty', 'Champion Challenge', 'Turn the Tide'),
-(5, 'Oathbreaker', 'What have you done! You should seek out atonement immediately.', 'Control Undead', 'Dreadful Aspect');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `cms_races`
 --
 
@@ -3346,6 +3391,12 @@ ALTER TABLE `cms_class_druid_circle_land`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `cms_class_generic_spellslots`
+--
+ALTER TABLE `cms_class_generic_spellslots`
+  ADD PRIMARY KEY (`ID`) USING BTREE;
+
+--
 -- Indexes for table `cms_class_monk_bonus`
 --
 ALTER TABLE `cms_class_monk_bonus`
@@ -3356,6 +3407,12 @@ ALTER TABLE `cms_class_monk_bonus`
 --
 ALTER TABLE `cms_class_monk_elemental_disciplines`
   ADD PRIMARY KEY (`ID`) USING BTREE;
+
+--
+-- Indexes for table `cms_class_paladin_sacred_oaths`
+--
+ALTER TABLE `cms_class_paladin_sacred_oaths`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `cms_class_ranger_hunter`
@@ -3514,12 +3571,6 @@ ALTER TABLE `cms_menu_main`
 -- Indexes for table `cms_menu_sub`
 --
 ALTER TABLE `cms_menu_sub`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `cms_paladin_sacred_oaths`
---
-ALTER TABLE `cms_paladin_sacred_oaths`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -3693,6 +3744,12 @@ ALTER TABLE `cms_class_druid_circle_land`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `cms_class_generic_spellslots`
+--
+ALTER TABLE `cms_class_generic_spellslots`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
 -- AUTO_INCREMENT for table `cms_class_monk_bonus`
 --
 ALTER TABLE `cms_class_monk_bonus`
@@ -3703,6 +3760,12 @@ ALTER TABLE `cms_class_monk_bonus`
 --
 ALTER TABLE `cms_class_monk_elemental_disciplines`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `cms_class_paladin_sacred_oaths`
+--
+ALTER TABLE `cms_class_paladin_sacred_oaths`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `cms_class_ranger_hunter`
@@ -3847,12 +3910,6 @@ ALTER TABLE `cms_menu_main`
 --
 ALTER TABLE `cms_menu_sub`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT for table `cms_paladin_sacred_oaths`
---
-ALTER TABLE `cms_paladin_sacred_oaths`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `cms_races`
