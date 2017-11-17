@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2017 at 04:34 AM
+-- Generation Time: Nov 17, 2017 at 06:27 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.0.25
 
@@ -21,58 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `heroes`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `class_warlock_invocation`
---
-
-CREATE TABLE `class_warlock_invocation` (
-  `ID` int(11) NOT NULL,
-  `Name` varchar(100) NOT NULL,
-  `Blast_Invocation` varchar(50) NOT NULL DEFAULT 'no',
-  `Req_Level` int(11) NOT NULL DEFAULT '0',
-  `Req_Pact` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `class_warlock_invocation`
---
-
-INSERT INTO `class_warlock_invocation` (`ID`, `Name`, `Blast_Invocation`, `Req_Level`, `Req_Pact`) VALUES
-(1, 'Agonizing Blast', 'yes', 1, 0),
-(2, 'Armor of Shadows', 'no', 1, 0),
-(3, 'Ascendent Step', 'no', 9, 0),
-(4, 'Beast Speech', 'no', 1, 0),
-(5, 'Beguiling Influence', 'no', 1, 0),
-(6, 'Bewitching Whispers', 'no', 7, 0),
-(7, 'Book of Ancient Secrets', 'no', 1, 3),
-(8, 'Chains of Carceri', 'no', 15, 1),
-(9, 'Devil\'s Sight', 'no', 1, 0),
-(10, 'Dreadful Word', 'no', 7, 0),
-(11, 'Eldritch Sight', 'no', 1, 0),
-(12, 'Eldritch Spear', 'yes', 1, 0),
-(13, 'Eyes of the Rune Keeper', 'no', 1, 0),
-(14, 'Fiendish Vigor', 'no', 1, 0),
-(15, 'Gaze of Two Minds', 'no', 1, 0),
-(16, 'Lifedrinker', 'no', 12, 2),
-(17, 'Mask of Many Faces', 'no', 1, 0),
-(18, 'Master of Myriad Forms', 'no', 15, 0),
-(19, 'Minions of Chaos', 'no', 9, 0),
-(20, 'Mire the Mind', 'no', 5, 0),
-(21, 'Misty Visions', 'no', 1, 0),
-(22, 'One With Shadows', 'no', 5, 0),
-(23, 'Otherwordly Leap', 'no', 9, 0),
-(24, 'Repelling Blast', 'yes', 1, 0),
-(25, 'Sculptor of Flesh', 'no', 7, 0),
-(26, 'Sign of Ill Omen', 'no', 5, 0),
-(27, 'Thief of Five Fates', 'no', 1, 0),
-(28, 'Thirsting Blade', 'no', 5, 2),
-(29, 'Visions of Distant Realms', 'no', 15, 0),
-(30, 'Voice of the Chain Master', 'no', 1, 0),
-(31, 'Whispers of the Grave', 'no', 9, 0),
-(32, 'Witch Sight', 'no', 15, 0);
 
 -- --------------------------------------------------------
 
@@ -675,6 +623,46 @@ INSERT INTO `cms_classes` (`ID`, `Name`, `HD`, `PrimeStats`, `Source`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cms_class_archetype_spellsknown`
+--
+
+CREATE TABLE `cms_class_archetype_spellsknown` (
+  `ID` int(11) NOT NULL,
+  `Class_Level` int(11) NOT NULL,
+  `Cantrips` int(11) DEFAULT NULL,
+  `Spells` int(11) DEFAULT NULL,
+  `Max_Level` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cms_class_archetype_spellsknown`
+--
+
+INSERT INTO `cms_class_archetype_spellsknown` (`ID`, `Class_Level`, `Cantrips`, `Spells`, `Max_Level`) VALUES
+(1, 1, NULL, NULL, NULL),
+(2, 2, NULL, NULL, NULL),
+(3, 3, 2, 3, '1st-Level'),
+(4, 4, 2, 4, '1st-Level'),
+(5, 5, 2, 4, '1st-Level'),
+(6, 6, 2, 4, '1st-Level'),
+(7, 7, 2, 5, '2nd-Level'),
+(8, 8, 2, 6, '2nd-Level'),
+(9, 9, 2, 6, '2nd-Level'),
+(10, 10, 3, 7, '2nd-Level'),
+(11, 11, 3, 8, '2nd-Level'),
+(12, 12, 3, 8, '2nd-Level'),
+(13, 13, 3, 9, '3rd-Level'),
+(14, 14, 3, 10, '3rd-Level'),
+(15, 15, 3, 10, '3rd-Level'),
+(16, 16, 3, 11, '3rd-Level'),
+(17, 17, 3, 11, '3rd-Level'),
+(18, 18, 3, 11, '3rd-Level'),
+(19, 19, 3, 12, '4th-Level'),
+(20, 20, 3, 13, '4th-Level');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `cms_class_armor_prof`
 --
 
@@ -792,6 +780,69 @@ INSERT INTO `cms_class_barbarian_totems` (`ID`, `Totem_ID`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cms_class_bard_spellsknown`
+--
+
+CREATE TABLE `cms_class_bard_spellsknown` (
+  `ID` int(11) NOT NULL,
+  `Bard_Level` int(11) NOT NULL,
+  `Spells` int(11) NOT NULL,
+  `Max_Level` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cms_class_bard_spellsknown`
+--
+
+INSERT INTO `cms_class_bard_spellsknown` (`ID`, `Bard_Level`, `Spells`, `Max_Level`) VALUES
+(1, 1, 4, '1st-Level'),
+(2, 2, 5, '1st-Level'),
+(3, 3, 6, '2nd-Level'),
+(4, 4, 7, '2nd-Level'),
+(5, 5, 8, '3rd-Level'),
+(6, 6, 9, '3rd-Level'),
+(7, 7, 10, '4th-Level'),
+(8, 8, 11, '4th-Level'),
+(9, 9, 12, '5th-Level'),
+(10, 10, 12, '5th-Level'),
+(11, 11, 13, '6th-Level'),
+(12, 12, 13, '6th-Level'),
+(13, 13, 14, '7th-Level'),
+(14, 14, 14, '7th-Level'),
+(15, 15, 15, '8th-Level'),
+(16, 16, 15, '8th-Level'),
+(17, 17, 16, '9th-Level'),
+(18, 18, 16, '9th-Level'),
+(19, 19, 16, '9th-Level'),
+(20, 20, 16, '9th-Level');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cms_class_cantrips`
+--
+
+CREATE TABLE `cms_class_cantrips` (
+  `ID` int(11) NOT NULL,
+  `Class_ID` int(11) NOT NULL,
+  `Cantrips` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='All classes with cantrips gain an additional cantrip at 4th and 10th level.';
+
+--
+-- Dumping data for table `cms_class_cantrips`
+--
+
+INSERT INTO `cms_class_cantrips` (`ID`, `Class_ID`, `Cantrips`) VALUES
+(1, 6, 2),
+(2, 1, 3),
+(3, 7, 2),
+(4, 11, 4),
+(5, 12, 2),
+(6, 4, 3);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `cms_class_druid_circle_land`
 --
 
@@ -857,6 +908,42 @@ INSERT INTO `cms_class_monk_bonus` (`ID`, `Monk_Level`, `Marital_Arts`, `Ki Poin
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cms_class_monk_elemental_disciplines`
+--
+
+CREATE TABLE `cms_class_monk_elemental_disciplines` (
+  `ID` int(11) NOT NULL,
+  `Req_Level` int(11) NOT NULL,
+  `Name` varchar(200) NOT NULL,
+  `Ki Cost` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cms_class_monk_elemental_disciplines`
+--
+
+INSERT INTO `cms_class_monk_elemental_disciplines` (`ID`, `Req_Level`, `Name`, `Ki Cost`) VALUES
+(1, 17, 'Breath of Winter', 6),
+(2, 6, 'Clench of the North Wind', 3),
+(3, 1, 'Elemental Atunement', 0),
+(4, 17, 'Eternal Mountain Defense', 5),
+(5, 1, 'Fangs of the Fire Snake', 1),
+(6, 1, 'Fist of the Four Thunders', 2),
+(7, 1, 'Fist of Unbroken Air', 2),
+(8, 11, 'Flames of the Pheonix', 4),
+(9, 6, 'Gong of the Summit', 3),
+(10, 11, 'Mist Stance', 4),
+(11, 11, 'Ride the Wind', 4),
+(12, 17, 'River of Hungry Flame', 5),
+(13, 1, 'Rush of the Gale Spirits', 2),
+(14, 1, 'Shape the Flowing River', 1),
+(15, 1, 'Sweeping Cinder Strike', 2),
+(16, 1, 'Water Whip', 2),
+(17, 17, 'Wave of Rolling Earth', 6);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `cms_class_ranger_hunter`
 --
 
@@ -882,6 +969,45 @@ INSERT INTO `cms_class_ranger_hunter` (`ID`, `Trait_ID`, `Name`) VALUES
 (9, 153, 'Evasion'),
 (10, 153, 'Stand Against the Tide'),
 (11, 153, 'Uncanny Dodge');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cms_class_ranger_spellsknown`
+--
+
+CREATE TABLE `cms_class_ranger_spellsknown` (
+  `ID` int(11) NOT NULL,
+  `Ranger_Level` int(11) NOT NULL,
+  `Spells_Known` int(11) DEFAULT NULL,
+  `Max_Level` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cms_class_ranger_spellsknown`
+--
+
+INSERT INTO `cms_class_ranger_spellsknown` (`ID`, `Ranger_Level`, `Spells_Known`, `Max_Level`) VALUES
+(1, 1, NULL, NULL),
+(2, 2, 2, '1st-Level'),
+(3, 3, 3, '1st-Level'),
+(4, 4, 3, '1st-Level'),
+(5, 5, 4, '2nd-Level'),
+(6, 6, 4, '2nd-Level'),
+(7, 7, 5, '2nd-Level'),
+(8, 8, 5, '2nd-Level'),
+(9, 9, 6, '3rd-Level'),
+(10, 10, 6, '3rd-Level'),
+(11, 11, 7, '3rd-Level'),
+(12, 12, 7, '3rd-Level'),
+(13, 13, 8, '4th-Level'),
+(14, 14, 8, '4th-Level'),
+(15, 15, 9, '4th-Level'),
+(16, 16, 9, '4th-Level'),
+(17, 17, 10, '5th-Level'),
+(18, 18, 10, '5th-Level'),
+(19, 19, 11, '5th-Level'),
+(20, 20, 11, '5th-Level');
 
 -- --------------------------------------------------------
 
@@ -1004,6 +1130,45 @@ INSERT INTO `cms_class_sorcerer_metamagic` (`ID`, `Name`) VALUES
 (6, 'Quickened Spell'),
 (7, 'Subtle Spell'),
 (8, 'Twinned Spell');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cms_class_sorcerer_spellsknown`
+--
+
+CREATE TABLE `cms_class_sorcerer_spellsknown` (
+  `ID` int(11) NOT NULL,
+  `Sorcerer_Level` int(11) NOT NULL,
+  `Spells` int(11) NOT NULL,
+  `Max_Level` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cms_class_sorcerer_spellsknown`
+--
+
+INSERT INTO `cms_class_sorcerer_spellsknown` (`ID`, `Sorcerer_Level`, `Spells`, `Max_Level`) VALUES
+(1, 1, 2, '1st-Level'),
+(2, 2, 3, '1st-Level'),
+(3, 3, 4, '2nd-Level'),
+(4, 4, 5, '2nd-Level'),
+(5, 5, 6, '3rd-Level'),
+(6, 6, 7, '3rd-Level'),
+(7, 7, 8, '4th-Level'),
+(8, 8, 9, '4th-Level'),
+(9, 9, 10, '5th-Level'),
+(10, 10, 11, '5th-Level'),
+(11, 11, 12, '6th-Level'),
+(12, 12, 12, '6th-Level'),
+(13, 13, 13, '7th-Level'),
+(14, 14, 13, '7th-Level'),
+(15, 15, 14, '8th-Level'),
+(16, 16, 14, '8th-Level'),
+(17, 17, 15, '9th-Level'),
+(18, 18, 15, '9th-Level'),
+(19, 19, 15, '9th-Level'),
+(20, 20, 15, '9th-Level');
 
 -- --------------------------------------------------------
 
@@ -1434,6 +1599,100 @@ INSERT INTO `cms_class_traits` (`ID`, `Class_ID`, `Sub_ID`, `trait_ID`, `trait_L
 (382, 12, 4, 181, 6, 'Defy Death'),
 (383, 12, 4, 182, 10, 'Undying Nature'),
 (384, 12, 4, 183, 14, 'Indestructible Life');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cms_class_warlock_invocations`
+--
+
+CREATE TABLE `cms_class_warlock_invocations` (
+  `ID` int(11) NOT NULL,
+  `Name` varchar(100) NOT NULL,
+  `Blast_Invocation` varchar(50) NOT NULL DEFAULT 'no',
+  `Req_Level` int(11) NOT NULL DEFAULT '0',
+  `Req_Pact` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cms_class_warlock_invocations`
+--
+
+INSERT INTO `cms_class_warlock_invocations` (`ID`, `Name`, `Blast_Invocation`, `Req_Level`, `Req_Pact`) VALUES
+(1, 'Agonizing Blast', 'yes', 1, 0),
+(2, 'Armor of Shadows', 'no', 1, 0),
+(3, 'Ascendent Step', 'no', 9, 0),
+(4, 'Beast Speech', 'no', 1, 0),
+(5, 'Beguiling Influence', 'no', 1, 0),
+(6, 'Bewitching Whispers', 'no', 7, 0),
+(7, 'Book of Ancient Secrets', 'no', 1, 3),
+(8, 'Chains of Carceri', 'no', 15, 1),
+(9, 'Devil\'s Sight', 'no', 1, 0),
+(10, 'Dreadful Word', 'no', 7, 0),
+(11, 'Eldritch Sight', 'no', 1, 0),
+(12, 'Eldritch Spear', 'yes', 1, 0),
+(13, 'Eyes of the Rune Keeper', 'no', 1, 0),
+(14, 'Fiendish Vigor', 'no', 1, 0),
+(15, 'Gaze of Two Minds', 'no', 1, 0),
+(16, 'Lifedrinker', 'no', 12, 2),
+(17, 'Mask of Many Faces', 'no', 1, 0),
+(18, 'Master of Myriad Forms', 'no', 15, 0),
+(19, 'Minions of Chaos', 'no', 9, 0),
+(20, 'Mire the Mind', 'no', 5, 0),
+(21, 'Misty Visions', 'no', 1, 0),
+(22, 'One With Shadows', 'no', 5, 0),
+(23, 'Otherwordly Leap', 'no', 9, 0),
+(24, 'Repelling Blast', 'yes', 1, 0),
+(25, 'Sculptor of Flesh', 'no', 7, 0),
+(26, 'Sign of Ill Omen', 'no', 5, 0),
+(27, 'Thief of Five Fates', 'no', 1, 0),
+(28, 'Thirsting Blade', 'no', 5, 2),
+(29, 'Visions of Distant Realms', 'no', 15, 0),
+(30, 'Voice of the Chain Master', 'no', 1, 0),
+(31, 'Whispers of the Grave', 'no', 9, 0),
+(32, 'Witch Sight', 'no', 15, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cms_class_warlock_pactmagic`
+--
+
+CREATE TABLE `cms_class_warlock_pactmagic` (
+  `ID` int(11) NOT NULL,
+  `Warlock_Level` int(11) NOT NULL,
+  `Cantrips` int(11) NOT NULL,
+  `Spells Known` int(11) NOT NULL,
+  `Spell Slots` int(11) NOT NULL,
+  `Slot Level` varchar(50) NOT NULL,
+  `invocations Known` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cms_class_warlock_pactmagic`
+--
+
+INSERT INTO `cms_class_warlock_pactmagic` (`ID`, `Warlock_Level`, `Cantrips`, `Spells Known`, `Spell Slots`, `Slot Level`, `invocations Known`) VALUES
+(1, 1, 2, 2, 1, '1st-Level', NULL),
+(2, 2, 2, 3, 2, '1st-Level', 2),
+(3, 3, 2, 4, 2, '2nd-Level', 2),
+(4, 4, 3, 5, 2, '2nd-Level', 2),
+(5, 5, 3, 6, 2, '3rd-Level', 3),
+(6, 6, 3, 7, 2, '3rd-Level', 3),
+(7, 7, 3, 8, 2, '4th-Level', 4),
+(8, 8, 3, 9, 2, '4th-Level', 4),
+(9, 9, 3, 10, 2, '5th-Level', 5),
+(10, 10, 4, 10, 2, '5th-Level', 5),
+(11, 11, 4, 11, 3, '5th-Level', 5),
+(12, 12, 4, 11, 3, '5th-Level', 6),
+(13, 13, 4, 12, 3, '5th-Level', 6),
+(14, 14, 4, 12, 3, '5th-Level', 6),
+(15, 15, 4, 13, 3, '5th-Level', 7),
+(16, 16, 4, 13, 3, '5th-Level', 7),
+(17, 17, 4, 14, 4, '5th-Level', 7),
+(18, 18, 4, 14, 4, '5th-Level', 8),
+(19, 19, 4, 15, 4, '5th-Level', 8),
+(20, 20, 4, 15, 4, '5th-Level', 8);
 
 -- --------------------------------------------------------
 
@@ -2771,44 +3030,48 @@ INSERT INTO `cms_race_tools` (`ID`, `rID`, `rFullName`, `rTools`, `Choices`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cms_spellcasting_warlock`
+-- Table structure for table `cms_spell_slots`
 --
 
-CREATE TABLE `cms_spellcasting_warlock` (
+CREATE TABLE `cms_spell_slots` (
   `ID` int(11) NOT NULL,
-  `Warlock_Level` int(11) NOT NULL,
-  `Cantrips` int(11) NOT NULL,
-  `Spells Known` int(11) NOT NULL,
-  `Spell Slots` int(11) NOT NULL,
-  `Slot Level` varchar(50) NOT NULL,
-  `invocations Known` int(11) DEFAULT NULL
+  `Caster_Level` int(11) NOT NULL,
+  `1st-Level` int(11) DEFAULT NULL,
+  `2nd-Level` int(11) DEFAULT NULL,
+  `3rd-Level` int(11) DEFAULT NULL,
+  `4th-Level` int(11) DEFAULT NULL,
+  `5th-Level` int(11) DEFAULT NULL,
+  `6th-Level` int(11) DEFAULT NULL,
+  `7th-Level` int(11) DEFAULT NULL,
+  `8th-Level` int(11) DEFAULT NULL,
+  `9th-Level` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `cms_spellcasting_warlock`
+-- Dumping data for table `cms_spell_slots`
 --
 
-INSERT INTO `cms_spellcasting_warlock` (`ID`, `Warlock_Level`, `Cantrips`, `Spells Known`, `Spell Slots`, `Slot Level`, `invocations Known`) VALUES
-(1, 1, 2, 2, 1, '1st-Level', NULL),
-(2, 2, 2, 3, 2, '1st-Level', 2),
-(3, 3, 2, 4, 2, '2nd-Level', 2),
-(4, 4, 3, 5, 2, '2nd-Level', 2),
-(5, 5, 3, 6, 2, '3rd-Level', 3),
-(6, 6, 3, 7, 2, '3rd-Level', 3),
-(7, 7, 3, 8, 2, '4th-Level', 4),
-(8, 8, 3, 9, 2, '4th-Level', 4),
-(9, 9, 3, 10, 2, '5th-Level', 5),
-(10, 10, 4, 10, 2, '5th-Level', 5),
-(11, 11, 4, 11, 3, '5th-Level', 5),
-(12, 12, 4, 11, 3, '5th-Level', 6),
-(13, 13, 4, 12, 3, '5th-Level', 6),
-(14, 14, 4, 12, 3, '5th-Level', 6),
-(15, 15, 4, 13, 3, '5th-Level', 7),
-(16, 16, 4, 13, 3, '5th-Level', 7),
-(17, 17, 4, 14, 4, '5th-Level', 7),
-(18, 18, 4, 14, 4, '5th-Level', 8),
-(19, 19, 4, 15, 4, '5th-Level', 8),
-(20, 20, 4, 15, 4, '5th-Level', 8);
+INSERT INTO `cms_spell_slots` (`ID`, `Caster_Level`, `1st-Level`, `2nd-Level`, `3rd-Level`, `4th-Level`, `5th-Level`, `6th-Level`, `7th-Level`, `8th-Level`, `9th-Level`) VALUES
+(1, 1, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 2, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 3, 4, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, 4, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 5, 4, 3, 2, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 6, 4, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, 7, 4, 3, 3, 1, NULL, NULL, NULL, NULL, NULL),
+(8, 8, 4, 3, 3, 2, NULL, NULL, NULL, NULL, NULL),
+(9, 9, 4, 3, 3, 3, 1, NULL, NULL, NULL, NULL),
+(10, 10, 4, 3, 3, 3, 2, NULL, NULL, NULL, NULL),
+(11, 11, 4, 3, 3, 3, 2, 1, NULL, NULL, NULL),
+(12, 12, 4, 3, 3, 3, 2, 1, NULL, NULL, NULL),
+(13, 13, 4, 3, 3, 3, 2, 1, 1, NULL, NULL),
+(14, 14, 4, 3, 3, 3, 2, 1, 1, NULL, NULL),
+(15, 15, 4, 3, 3, 3, 2, 1, 1, 1, NULL),
+(16, 16, 4, 3, 3, 3, 2, 1, 1, 1, NULL),
+(17, 17, 4, 3, 3, 3, 2, 1, 1, 1, 1),
+(18, 18, 4, 3, 3, 3, 3, 1, 1, 1, 1),
+(19, 19, 4, 3, 3, 3, 3, 2, 1, 1, 1),
+(20, 20, 4, 3, 3, 3, 3, 2, 2, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -2934,15 +3197,51 @@ INSERT INTO `cms_warlock_pactboon` (`ID`, `Pact_ID`, `Name`) VALUES
 (2, 2, 'Pact of the Blade'),
 (3, 3, 'Pact of the Tome');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cms_warlock_pactmagic`
+--
+
+CREATE TABLE `cms_warlock_pactmagic` (
+  `ID` int(11) NOT NULL,
+  `Warlock_Level` int(11) NOT NULL,
+  `Cantrips` int(11) NOT NULL,
+  `Spells Known` int(11) NOT NULL,
+  `Spell Slots` int(11) NOT NULL,
+  `Slot Level` varchar(50) NOT NULL,
+  `invocations Known` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cms_warlock_pactmagic`
+--
+
+INSERT INTO `cms_warlock_pactmagic` (`ID`, `Warlock_Level`, `Cantrips`, `Spells Known`, `Spell Slots`, `Slot Level`, `invocations Known`) VALUES
+(1, 1, 2, 2, 1, '1st-Level', NULL),
+(2, 2, 2, 3, 2, '1st-Level', 2),
+(3, 3, 2, 4, 2, '2nd-Level', 2),
+(4, 4, 3, 5, 2, '2nd-Level', 2),
+(5, 5, 3, 6, 2, '3rd-Level', 3),
+(6, 6, 3, 7, 2, '3rd-Level', 3),
+(7, 7, 3, 8, 2, '4th-Level', 4),
+(8, 8, 3, 9, 2, '4th-Level', 4),
+(9, 9, 3, 10, 2, '5th-Level', 5),
+(10, 10, 4, 10, 2, '5th-Level', 5),
+(11, 11, 4, 11, 3, '5th-Level', 5),
+(12, 12, 4, 11, 3, '5th-Level', 6),
+(13, 13, 4, 12, 3, '5th-Level', 6),
+(14, 14, 4, 12, 3, '5th-Level', 6),
+(15, 15, 4, 13, 3, '5th-Level', 7),
+(16, 16, 4, 13, 3, '5th-Level', 7),
+(17, 17, 4, 14, 4, '5th-Level', 7),
+(18, 18, 4, 14, 4, '5th-Level', 8),
+(19, 19, 4, 15, 4, '5th-Level', 8),
+(20, 20, 4, 15, 4, '5th-Level', 8);
+
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `class_warlock_invocation`
---
-ALTER TABLE `class_warlock_invocation`
-  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `cms_bg_backgrounds`
@@ -3005,6 +3304,12 @@ ALTER TABLE `cms_classes`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `cms_class_archetype_spellsknown`
+--
+ALTER TABLE `cms_class_archetype_spellsknown`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `cms_class_armor_prof`
 --
 ALTER TABLE `cms_class_armor_prof`
@@ -3023,6 +3328,18 @@ ALTER TABLE `cms_class_barbarian_totems`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `cms_class_bard_spellsknown`
+--
+ALTER TABLE `cms_class_bard_spellsknown`
+  ADD PRIMARY KEY (`ID`) USING BTREE;
+
+--
+-- Indexes for table `cms_class_cantrips`
+--
+ALTER TABLE `cms_class_cantrips`
+  ADD PRIMARY KEY (`ID`) USING BTREE;
+
+--
 -- Indexes for table `cms_class_druid_circle_land`
 --
 ALTER TABLE `cms_class_druid_circle_land`
@@ -3035,10 +3352,22 @@ ALTER TABLE `cms_class_monk_bonus`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `cms_class_monk_elemental_disciplines`
+--
+ALTER TABLE `cms_class_monk_elemental_disciplines`
+  ADD PRIMARY KEY (`ID`) USING BTREE;
+
+--
 -- Indexes for table `cms_class_ranger_hunter`
 --
 ALTER TABLE `cms_class_ranger_hunter`
   ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `cms_class_ranger_spellsknown`
+--
+ALTER TABLE `cms_class_ranger_spellsknown`
+  ADD PRIMARY KEY (`ID`) USING BTREE;
 
 --
 -- Indexes for table `cms_class_rogue_sneakattack`
@@ -3065,6 +3394,12 @@ ALTER TABLE `cms_class_sorcerer_metamagic`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `cms_class_sorcerer_spellsknown`
+--
+ALTER TABLE `cms_class_sorcerer_spellsknown`
+  ADD PRIMARY KEY (`ID`) USING BTREE;
+
+--
 -- Indexes for table `cms_class_tools`
 --
 ALTER TABLE `cms_class_tools`
@@ -3074,6 +3409,18 @@ ALTER TABLE `cms_class_tools`
 -- Indexes for table `cms_class_traits`
 --
 ALTER TABLE `cms_class_traits`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `cms_class_warlock_invocations`
+--
+ALTER TABLE `cms_class_warlock_invocations`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `cms_class_warlock_pactmagic`
+--
+ALTER TABLE `cms_class_warlock_pactmagic`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -3195,9 +3542,9 @@ ALTER TABLE `cms_race_tools`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `cms_spellcasting_warlock`
+-- Indexes for table `cms_spell_slots`
 --
-ALTER TABLE `cms_spellcasting_warlock`
+ALTER TABLE `cms_spell_slots`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -3234,14 +3581,14 @@ ALTER TABLE `cms_warlock_pactboon`
   ADD PRIMARY KEY (`ID`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Indexes for table `cms_warlock_pactmagic`
 --
+ALTER TABLE `cms_warlock_pactmagic`
+  ADD PRIMARY KEY (`ID`);
 
 --
--- AUTO_INCREMENT for table `class_warlock_invocation`
+-- AUTO_INCREMENT for dumped tables
 --
-ALTER TABLE `class_warlock_invocation`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `cms_bg_backgrounds`
@@ -3304,6 +3651,12 @@ ALTER TABLE `cms_classes`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
+-- AUTO_INCREMENT for table `cms_class_archetype_spellsknown`
+--
+ALTER TABLE `cms_class_archetype_spellsknown`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
 -- AUTO_INCREMENT for table `cms_class_armor_prof`
 --
 ALTER TABLE `cms_class_armor_prof`
@@ -3322,6 +3675,18 @@ ALTER TABLE `cms_class_barbarian_totems`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `cms_class_bard_spellsknown`
+--
+ALTER TABLE `cms_class_bard_spellsknown`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `cms_class_cantrips`
+--
+ALTER TABLE `cms_class_cantrips`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `cms_class_druid_circle_land`
 --
 ALTER TABLE `cms_class_druid_circle_land`
@@ -3334,10 +3699,22 @@ ALTER TABLE `cms_class_monk_bonus`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
+-- AUTO_INCREMENT for table `cms_class_monk_elemental_disciplines`
+--
+ALTER TABLE `cms_class_monk_elemental_disciplines`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
 -- AUTO_INCREMENT for table `cms_class_ranger_hunter`
 --
 ALTER TABLE `cms_class_ranger_hunter`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `cms_class_ranger_spellsknown`
+--
+ALTER TABLE `cms_class_ranger_spellsknown`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `cms_class_rogue_sneakattack`
@@ -3358,10 +3735,28 @@ ALTER TABLE `cms_class_sorcerer_metamagic`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `cms_class_sorcerer_spellsknown`
+--
+ALTER TABLE `cms_class_sorcerer_spellsknown`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
 -- AUTO_INCREMENT for table `cms_class_traits`
 --
 ALTER TABLE `cms_class_traits`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=385;
+
+--
+-- AUTO_INCREMENT for table `cms_class_warlock_invocations`
+--
+ALTER TABLE `cms_class_warlock_invocations`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
+-- AUTO_INCREMENT for table `cms_class_warlock_pactmagic`
+--
+ALTER TABLE `cms_class_warlock_pactmagic`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `cms_class_wpn_prof`
@@ -3478,9 +3873,9 @@ ALTER TABLE `cms_race_tools`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
--- AUTO_INCREMENT for table `cms_spellcasting_warlock`
+-- AUTO_INCREMENT for table `cms_spell_slots`
 --
-ALTER TABLE `cms_spellcasting_warlock`
+ALTER TABLE `cms_spell_slots`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
@@ -3512,6 +3907,12 @@ ALTER TABLE `cms_users`
 --
 ALTER TABLE `cms_warlock_pactboon`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `cms_warlock_pactmagic`
+--
+ALTER TABLE `cms_warlock_pactmagic`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Constraints for dumped tables
