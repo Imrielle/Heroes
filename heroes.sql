@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2017 at 09:46 PM
+-- Generation Time: Nov 17, 2017 at 10:22 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.0.25
 
@@ -986,6 +986,37 @@ INSERT INTO `cms_class_monk_elemental_disciplines` (`ID`, `Req_Level`, `Name`, `
 (15, 1, 'Sweeping Cinder Strike', 2),
 (16, 1, 'Water Whip', 2),
 (17, 17, 'Wave of Rolling Earth', 6);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cms_class_multiclass`
+--
+
+CREATE TABLE `cms_class_multiclass` (
+  `ID` int(11) NOT NULL,
+  `Class_ID` int(11) NOT NULL,
+  `Ability_Score_Min` varchar(50) NOT NULL,
+  `Proficiencies` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cms_class_multiclass`
+--
+
+INSERT INTO `cms_class_multiclass` (`ID`, `Class_ID`, `Ability_Score_Min`, `Proficiencies`) VALUES
+(1, 1, '0|0|0|0|13|0', 'Light Armor, Medium Armor, Shields'),
+(2, 2, '13/13|0|0|0|0', 'Light Armor, Medium Armor, Shields, Simple Weapons, Martial Weapons'),
+(3, 3, '0|13|0|0|0|0', 'Light Armor, 1 Skill, Thieve\'s Tools'),
+(4, 4, '0|0|0|13||0|0', NULL),
+(5, 5, '13|0|0|0||0|0', 'Shields, Simple Weapons, Martial Weapons'),
+(6, 6, '0|0|0|0||0|13', 'Light Armor, 1 Skill, 1 Instrument'),
+(7, 7, '0|0|0|0|13|0', 'Light Armor, Medium Armor, Shields. (Non-Metal)'),
+(8, 8, '0|13|0|0||13|0', 'Simple Weapons, Shortswords'),
+(9, 9, '13|0|0|0||13|0', 'Light Armor, Medium Armor, Shields, Simple Weapons, Martial Weapons'),
+(10, 10, '0|13|0|0||13|0', 'Light Armor, Medium Armor, Shields, Simple Weapons, Martial Weapons, 1 Skill'),
+(11, 11, '0|0|0|0||0|13', NULL),
+(12, 12, '0|0|0|0||0|13', 'Light armor, Simple Weapons');
 
 -- --------------------------------------------------------
 
@@ -3409,6 +3440,12 @@ ALTER TABLE `cms_class_monk_elemental_disciplines`
   ADD PRIMARY KEY (`ID`) USING BTREE;
 
 --
+-- Indexes for table `cms_class_multiclass`
+--
+ALTER TABLE `cms_class_multiclass`
+  ADD PRIMARY KEY (`ID`) USING BTREE;
+
+--
 -- Indexes for table `cms_class_paladin_sacred_oaths`
 --
 ALTER TABLE `cms_class_paladin_sacred_oaths`
@@ -3760,6 +3797,12 @@ ALTER TABLE `cms_class_monk_bonus`
 --
 ALTER TABLE `cms_class_monk_elemental_disciplines`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `cms_class_multiclass`
+--
+ALTER TABLE `cms_class_multiclass`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `cms_class_paladin_sacred_oaths`
