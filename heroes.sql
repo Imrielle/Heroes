@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2017 at 12:39 AM
+-- Generation Time: Nov 20, 2017 at 12:54 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.0.25
 
@@ -758,28 +758,6 @@ INSERT INTO `cms_class_barbarian_rage` (`ID`, `Barbarian_Level`, `Rages`, `Rage_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cms_class_barbarian_totems`
---
-
-CREATE TABLE `cms_class_barbarian_totems` (
-  `ID` int(11) NOT NULL,
-  `Totem_ID` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `cms_class_barbarian_totems`
---
-
-INSERT INTO `cms_class_barbarian_totems` (`ID`, `Totem_ID`) VALUES
-(1, 'Bear'),
-(2, 'Eagle'),
-(3, 'Wolf'),
-(4, 'Elk'),
-(5, 'Tiger');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `cms_class_bard_spellsknown`
 --
 
@@ -839,31 +817,6 @@ INSERT INTO `cms_class_cantrips` (`ID`, `Class_ID`, `Cantrips`) VALUES
 (4, 11, 4),
 (5, 12, 2),
 (6, 4, 3);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cms_class_druid_circle_land`
---
-
-CREATE TABLE `cms_class_druid_circle_land` (
-  `ID` int(11) NOT NULL,
-  `Druid_Circle` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `cms_class_druid_circle_land`
---
-
-INSERT INTO `cms_class_druid_circle_land` (`ID`, `Druid_Circle`) VALUES
-(1, 'Arctic'),
-(2, 'Coast'),
-(3, 'Desert'),
-(4, 'Forest'),
-(5, 'Grassland'),
-(6, 'Mountain'),
-(7, 'Swamp'),
-(8, 'Underdark');
 
 -- --------------------------------------------------------
 
@@ -3502,12 +3455,6 @@ ALTER TABLE `cms_class_barbarian_rage`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `cms_class_barbarian_totems`
---
-ALTER TABLE `cms_class_barbarian_totems`
-  ADD PRIMARY KEY (`ID`);
-
---
 -- Indexes for table `cms_class_bard_spellsknown`
 --
 ALTER TABLE `cms_class_bard_spellsknown`
@@ -3518,12 +3465,6 @@ ALTER TABLE `cms_class_bard_spellsknown`
 --
 ALTER TABLE `cms_class_cantrips`
   ADD PRIMARY KEY (`ID`) USING BTREE;
-
---
--- Indexes for table `cms_class_druid_circle_land`
---
-ALTER TABLE `cms_class_druid_circle_land`
-  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `cms_class_equipment`
@@ -3861,12 +3802,6 @@ ALTER TABLE `cms_class_barbarian_rage`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT for table `cms_class_barbarian_totems`
---
-ALTER TABLE `cms_class_barbarian_totems`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
 -- AUTO_INCREMENT for table `cms_class_bard_spellsknown`
 --
 ALTER TABLE `cms_class_bard_spellsknown`
@@ -3877,12 +3812,6 @@ ALTER TABLE `cms_class_bard_spellsknown`
 --
 ALTER TABLE `cms_class_cantrips`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `cms_class_druid_circle_land`
---
-ALTER TABLE `cms_class_druid_circle_land`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `cms_class_equipment`
