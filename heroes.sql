@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2017 at 09:17 PM
+-- Generation Time: Nov 17, 2017 at 10:22 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.0.25
 
@@ -758,6 +758,28 @@ INSERT INTO `cms_class_barbarian_rage` (`ID`, `Barbarian_Level`, `Rages`, `Rage_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cms_class_barbarian_totems`
+--
+
+CREATE TABLE `cms_class_barbarian_totems` (
+  `ID` int(11) NOT NULL,
+  `Totem_ID` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cms_class_barbarian_totems`
+--
+
+INSERT INTO `cms_class_barbarian_totems` (`ID`, `Totem_ID`) VALUES
+(1, 'Bear'),
+(2, 'Eagle'),
+(3, 'Wolf'),
+(4, 'Elk'),
+(5, 'Tiger');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `cms_class_bard_spellsknown`
 --
 
@@ -821,102 +843,27 @@ INSERT INTO `cms_class_cantrips` (`ID`, `Class_ID`, `Cantrips`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cms_class_equipment`
+-- Table structure for table `cms_class_druid_circle_land`
 --
 
-CREATE TABLE `cms_class_equipment` (
+CREATE TABLE `cms_class_druid_circle_land` (
   `ID` int(11) NOT NULL,
-  `Class_ID` int(11) NOT NULL,
-  `Equip_ID` int(11) NOT NULL,
-  `Text` text
+  `Druid_Circle` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `cms_class_equipment`
+-- Dumping data for table `cms_class_druid_circle_land`
 --
 
-INSERT INTO `cms_class_equipment` (`ID`, `Class_ID`, `Equip_ID`, `Text`) VALUES
-(1, 1, 1, 'mace'),
-(2, 1, 1, 'warhammer (if proficient)'),
-(3, 1, 2, 'scale mail'),
-(4, 1, 2, 'leather armor'),
-(5, 1, 2, 'chain mail (if proficient)'),
-(6, 1, 3, 'light crossbow and case of 20 bolts'),
-(7, 1, 3, 'simple weapon'),
-(8, 1, 4, 'priest\'s Pack'),
-(9, 1, 4, 'explorer\'s Pack'),
-(10, 2, 1, 'chainmail'),
-(11, 2, 1, 'leather, longbow, and quiver of 20 arrows'),
-(12, 2, 2, 'martial weapon and shield'),
-(13, 2, 2, 'two martial weapons'),
-(14, 2, 3, 'light crossbow and case of 20 bolts'),
-(15, 2, 3, 'two handaxes'),
-(16, 2, 4, 'dungeoneer\'s pack'),
-(17, 2, 4, 'explorer\'s pack'),
-(18, 3, 1, 'rapier'),
-(19, 3, 1, 'shortsword'),
-(20, 3, 2, 'shortbow and quiver of 20 arrows'),
-(21, 3, 2, 'shortsword'),
-(22, 3, 3, 'burglar\'s pack'),
-(23, 3, 3, 'dungeoneer\'s pack'),
-(24, 3, 3, 'explorer\'s pack'),
-(25, 4, 1, 'quarterstaff'),
-(26, 4, 1, 'dagger'),
-(27, 4, 2, 'component pouch'),
-(28, 4, 2, 'arcane focus (crystal, orb, rod, staff, or wand)'),
-(29, 4, 3, 'scholar\'s pack'),
-(30, 4, 3, 'explorer\'s pack'),
-(31, 5, 1, 'greataxe'),
-(32, 5, 1, 'martial weapon'),
-(33, 5, 2, 'two handaxes'),
-(34, 5, 2, 'simple weapon'),
-(35, 6, 1, 'rapier'),
-(36, 6, 1, 'longsword'),
-(37, 6, 1, 'simple weapon'),
-(38, 6, 2, 'diplomat\'s pack'),
-(39, 6, 2, 'entertainer\'s pack'),
-(40, 6, 3, 'bagpipes'),
-(41, 6, 3, 'drum'),
-(42, 6, 3, 'dulcimer'),
-(43, 6, 3, 'flute'),
-(44, 6, 3, 'lute'),
-(45, 6, 3, 'lyre'),
-(46, 6, 3, 'horn'),
-(47, 6, 3, 'pan flute'),
-(48, 6, 3, 'shawm'),
-(49, 6, 3, 'viol'),
-(50, 7, 1, 'wooden shield'),
-(51, 7, 1, 'simple weapon'),
-(52, 7, 2, 'scimitar'),
-(53, 7, 2, 'simple melee weapon'),
-(54, 8, 1, 'shortsword'),
-(55, 8, 1, 'simple weapon'),
-(56, 8, 2, 'dungeoneer\'s pack'),
-(57, 8, 2, 'explorer\'s pack'),
-(58, 9, 1, 'martial weapon and shield'),
-(59, 9, 1, 'two martial weapons'),
-(60, 9, 2, 'five javelins'),
-(61, 9, 2, 'simple melee weapon'),
-(62, 9, 3, 'priest\'s pack'),
-(63, 9, 3, 'explorer\'s pack'),
-(64, 10, 1, 'scale mail'),
-(65, 10, 1, 'leather armor'),
-(66, 10, 2, 'two shortswords'),
-(67, 10, 2, 'two simple melee weapons'),
-(68, 10, 3, 'dungeoneer\'s pack'),
-(69, 10, 3, 'explorer\'s pack'),
-(70, 11, 1, 'light crossbow and case of 20 bolts'),
-(71, 11, 1, 'simple weapon'),
-(72, 11, 2, 'component pouch'),
-(73, 11, 2, 'arcane focus (crystal, orb, rod staff, or wand)'),
-(74, 11, 3, 'dungeoneer\'s pack'),
-(75, 11, 3, 'explorer\'s pack'),
-(76, 12, 1, 'a light crossbow and a case of 20 bolts'),
-(77, 12, 1, 'simple weapon'),
-(78, 12, 2, 'component pouch'),
-(79, 12, 2, 'arcane focus (crystal, orb, rod, staff, or wand)'),
-(80, 12, 3, 'scholar\'s pack'),
-(81, 12, 3, 'dungeoneer\'s pack');
+INSERT INTO `cms_class_druid_circle_land` (`ID`, `Druid_Circle`) VALUES
+(1, 'Arctic'),
+(2, 'Coast'),
+(3, 'Desert'),
+(4, 'Forest'),
+(5, 'Grassland'),
+(6, 'Mountain'),
+(7, 'Swamp'),
+(8, 'Underdark');
 
 -- --------------------------------------------------------
 
@@ -1074,6 +1021,31 @@ INSERT INTO `cms_class_multiclass` (`ID`, `Class_ID`, `Ability_Score_Min`, `Prof
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cms_class_paladin_sacred_oaths`
+--
+
+CREATE TABLE `cms_class_paladin_sacred_oaths` (
+  `ID` int(11) NOT NULL,
+  `Oath` varchar(50) NOT NULL,
+  `Tenets` text NOT NULL,
+  `Channel Divinity` varchar(50) NOT NULL,
+  `Channel Divinity 2` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cms_class_paladin_sacred_oaths`
+--
+
+INSERT INTO `cms_class_paladin_sacred_oaths` (`ID`, `Oath`, `Tenets`, `Channel Divinity`, `Channel Divinity 2`) VALUES
+(1, 'Devotion', 'Honesty, Courage, Compassion, Honor, and Duty', 'Sacred Weapon', 'Turn the Unholy'),
+(2, 'Ancients', 'Kindle the Light, Shelter the Light, Preserve Your Own Light, and Be the Light.', 'Nature\'s Wrath', 'Turn the Faithless'),
+(3, 'Vengence', 'Fight the Greater Evil, No Mercy for the Wicked, By Any Means Necessary, and Restitution.', 'Abjure Enemy', 'Vow of Enmity'),
+(4, 'Crown', 'Law, Loyalty, Courage, and Responsibilty', 'Champion Challenge', 'Turn the Tide'),
+(5, 'Oathbreaker', 'What have you done! You should seek out atonement immediately.', 'Control Undead', 'Dreadful Aspect');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `cms_class_ranger_hunter`
 --
 
@@ -1138,6 +1110,44 @@ INSERT INTO `cms_class_ranger_spellsknown` (`ID`, `Ranger_Level`, `Spells_Known`
 (18, 18, 10, '5th-Level'),
 (19, 19, 11, '5th-Level'),
 (20, 20, 11, '5th-Level');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cms_class_rogue_sneakattack`
+--
+
+CREATE TABLE `cms_class_rogue_sneakattack` (
+  `ID` int(11) NOT NULL,
+  `Rogue_Level` int(11) DEFAULT NULL,
+  `Sneak_Attack` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cms_class_rogue_sneakattack`
+--
+
+INSERT INTO `cms_class_rogue_sneakattack` (`ID`, `Rogue_Level`, `Sneak_Attack`) VALUES
+(1, 1, '1d6'),
+(2, 2, '1d6'),
+(3, 3, '2d6'),
+(4, 4, '2d6'),
+(5, 5, '3d6'),
+(6, 6, '3d6'),
+(7, 7, '4d6'),
+(8, 8, '4d6'),
+(9, 9, '5d6'),
+(10, 10, '5d6'),
+(11, 11, '6d6'),
+(12, 12, '6d6'),
+(13, 13, '7d6'),
+(14, 14, '7d6'),
+(15, 15, '8d6'),
+(16, 16, '8d6'),
+(17, 17, '9d6'),
+(18, 18, '9d6'),
+(19, 19, '10d6'),
+(20, 20, '10d6');
 
 -- --------------------------------------------------------
 
@@ -1923,44 +1933,6 @@ CREATE TABLE `cms_dnd_char` (
 
 INSERT INTO `cms_dnd_char` (`ID`, `Name`, `Surname`, `Class`, `Background`, `Race`, `Alignment`, `Owner`, `Gender`, `aStr`, `aDex`, `aCon`, `aInt`, `aWis`, `aCha`, `Exp`) VALUES
 (1, 'Laoi', 'Rielle', 3, 2, 122, 'CN', 1, 'F', 10, 17, 11, 14, 10, 10, 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cms_dnd_epic_boons`
---
-
-CREATE TABLE `cms_dnd_epic_boons` (
-  `ID` int(11) NOT NULL,
-  `Name` varchar(50) NOT NULL,
-  `Description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `cms_dnd_epic_boons`
---
-
-INSERT INTO `cms_dnd_epic_boons` (`ID`, `Name`, `Description`) VALUES
-(1, 'Boon of Combat Prowess', 'When you miss with a melee weapon attack, you can choose to hit instead. Once you use this boon, you can\'t use it again until you finish a short rest.'),
-(2, 'Boon of Dimensional Travel', 'As an action, you can cast the misty step spell, without using a spell slot or any components. Once you do so, you can\'t use this boon again until you finish a short rest.'),
-(3, 'Boon of Fate', 'When another creature that you can see within 60 feet of you makes an ability check, an attack roll, or a saving throw, you can roll a d2O and apply the result as a bonus or penalty to the roll. Once you use this boon, you can\'t use it again until you finish a short rest.'),
-(4, 'Boon of Fortitude', 'Your hit point maximum increases by 40.'),
-(5, 'Boon of High Magic', 'You gain one one 9th-Level spell slot, provided you already have one.'),
-(6, 'Boon of Immortality', 'You stop aging. You are immune to any effect that would age you, and you can\'t die from old age.'),
-(7, 'Boon of Invincibility', 'When you take damage from any source, you can reduce that damage to 0. Once you use this boon, you can\'t use it again until you finish a short rest.'),
-(8, 'Boon of Irresistible Offense', 'You can bypass the damage resistances of any creature.'),
-(9, 'Boon of Luck', 'You can add a d1O roll to any ability check, attack roll, or saving throw you make. Once you use this boon, you can\'t use it again until you finish a short rest.'),
-(10, 'Boon of Magic Resistance', 'You have advantage on saving throws against spells and other magical effects.'),
-(11, 'Boon of Peerless Aim', 'You can give yourself a +20 bonus to a ranged attack roll you make. Once you use this boon, you can\'t use it again until you finish a short rest.'),
-(12, 'Boon of Perfect Health', 'You are immune to all diseases and poisons, and you have advantage on Constitution saving throws.'),
-(13, 'Boon of Planar Travel', 'When you gain this boon, choose a plane of existence other than the Material Plane. You can now use an action to cast the plane shift spell (no spell slot or components required), targeting yourself only, and travel to the chosen plane, or from that plane back to the Material Plane. Once you use this boon, you can\'t use it again until you finish a short rest.'),
-(14, 'Boon of Quick Casting', 'Choose one of your spells of 1st through 3rd level that has a casting time of 1 action. That spell\'s casting time is now 1 bonus action for you.'),
-(15, 'Boon of Recovery', 'You can use a bonus action to regain a number of hit points equal to half your hit point maximum. Once you use this boon, you can\'t use it again until you finish a long rest.'),
-(16, 'Boon of Resilience', 'You have resistance to bludgeoning, piercing, and slashing damage from non-magical weapons.'),
-(17, 'Boon of Skill Proficiency', 'You gain proficiency in all skills.'),
-(18, 'Boon of Speed', 'Your walking speed increases by 30 feet.\r\nIn addition, you can use a bonus action to take the Dash or Disengage action. Once you do so, you can\'t do so again until you finish a short rest.'),
-(19, 'Boon of Spell Mastery', 'Choose one 1st-level sorcerer, warlock, or wizard spell that you can cast. You can now cast that spell at its lowest level without expending a spell slot.'),
-(20, 'Boon of Spell Recall', 'You can cast any spell you know or have prepared without expending a spell slot. Once you do so, you can\'t use this boon again until you finish a long rest.');
 
 -- --------------------------------------------------------
 
@@ -2822,73 +2794,6 @@ INSERT INTO `cms_dnd_weapons` (`ID`, `Name`, `Type`, `Value`, `HD`, `DmgType`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cms_feats`
---
-
-CREATE TABLE `cms_feats` (
-  `ID` int(11) NOT NULL,
-  `Name` varchar(200) NOT NULL,
-  `Ability_Score_Min` varchar(50) NOT NULL DEFAULT '0|0|0|0|0|0',
-  `Req_Spell` varchar(50) DEFAULT NULL,
-  `Req_Prof` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `cms_feats`
---
-
-INSERT INTO `cms_feats` (`ID`, `Name`, `Ability_Score_Min`, `Req_Spell`, `Req_Prof`) VALUES
-(1, 'Alert', '0|0|0|0|0|0', NULL, NULL),
-(2, 'Athlete', '0|0|0|0|0|0', NULL, NULL),
-(3, 'Actor', '0|0|0|0|0|0', NULL, NULL),
-(4, 'Charger', '0|0|0|0|0|0', NULL, NULL),
-(5, 'Crossbow Expert', '0|0|0|0|0|0', NULL, NULL),
-(6, 'Defensive Duelist', '0|0|0|0|0|0', NULL, NULL),
-(7, 'Defensive Duelist', '0|13|0|0|0|0', NULL, NULL),
-(8, 'Dual Wielder', '0|0|0|0|0|0', NULL, NULL),
-(9, 'Dungeon Delver', '0|0|0|0|0|0', NULL, NULL),
-(10, 'Durable', '0|0|0|0|0|0', NULL, NULL),
-(11, 'Elemental Adept (Acid)', '0|0|0|0|0|0', 'Yes', NULL),
-(12, 'Elemental Adept (Cold)', '0|0|0|0|0|0', 'Yes', NULL),
-(13, 'Elemental Adept (Fire)', '0|0|0|0|0|0', 'Yes', NULL),
-(14, 'Elemental Adept (Lightning)', '0|0|0|0|0|0', 'Yes', NULL),
-(15, 'Elemental Adept (Thunder)', '0|0|0|0|0|0', 'Yes', NULL),
-(16, 'Grappler', '13|0|0|0|0|0', NULL, NULL),
-(17, 'Great Weapon Master', '0|0|0|0|0|0', NULL, NULL),
-(18, 'Healer', '0|0|0|0|0|0', NULL, NULL),
-(19, 'Heavily Armored', '0|0|0|0|0|0', NULL, 'Medium'),
-(20, 'Heavy Armor Master', '0|0|0|0|0|0', NULL, 'Heavy'),
-(21, 'Inspiring Leader', '0|0|0|0|0|13', NULL, NULL),
-(22, 'Keen MInd', '0|0|0|0|0|0', NULL, NULL),
-(23, 'Lightly Armored', '0|0|0|0|0|0', NULL, NULL),
-(24, 'Linguist', '0|0|0|0|0|0', NULL, NULL),
-(25, 'Lucky', '0|0|0|0|0|0', NULL, NULL),
-(26, 'Mage Slayer', '0|0|0|0|0|0', NULL, NULL),
-(27, 'Magic Initiatite', '0|0|0|0|0|0', NULL, NULL),
-(28, 'Martial Adept', '0|0|0|0|0|0', NULL, NULL),
-(29, 'Medium Armor Master', '0|0|0|0|0|0', NULL, 'Medium'),
-(30, 'Mobile', '0|0|0|0|0|0', NULL, NULL),
-(31, 'Moderately Armored', '0|0|0|0|0|0', NULL, 'Light'),
-(32, 'Mounted Combat', '0|0|0|0|0|0', NULL, NULL),
-(33, 'Observant', '0|0|0|0|0|0', NULL, NULL),
-(34, 'Polearm Master', '0|0|0|0|0|0', NULL, NULL),
-(35, 'Resilient', '0|0|0|0|0|0', NULL, NULL),
-(36, 'Ritual Caster', '0|0|0|13/13|0', NULL, NULL),
-(37, 'Savage Attacker', '0|0|0|0|0|0', NULL, NULL),
-(38, 'Sentinel', '0|0|0|0|0|0', NULL, NULL),
-(39, 'Sharpshooter', '0|0|0|0|0|0', NULL, NULL),
-(40, 'Shield Master', '0|0|0|0|0|0', NULL, NULL),
-(41, 'Skilled', '0|0|0|0|0|0', NULL, NULL),
-(42, 'Skulker', '0|0|0|0|0|0', NULL, NULL),
-(43, 'Spell Sniper', '0|0|0|0|0|0', 'Yes', NULL),
-(44, 'Tavern Brawler', '0|0|0|0|0|0', NULL, NULL),
-(45, 'Tough', '0|0|0|0|0|0', NULL, NULL),
-(46, 'War Caster', '0|0|0|0|0|0', 'Yes', NULL),
-(47, 'Weapon Master', '0|0|0|0|0|0', NULL, NULL);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `cms_forum_categories`
 --
 
@@ -3493,6 +3398,12 @@ ALTER TABLE `cms_class_barbarian_rage`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `cms_class_barbarian_totems`
+--
+ALTER TABLE `cms_class_barbarian_totems`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `cms_class_bard_spellsknown`
 --
 ALTER TABLE `cms_class_bard_spellsknown`
@@ -3505,10 +3416,10 @@ ALTER TABLE `cms_class_cantrips`
   ADD PRIMARY KEY (`ID`) USING BTREE;
 
 --
--- Indexes for table `cms_class_equipment`
+-- Indexes for table `cms_class_druid_circle_land`
 --
-ALTER TABLE `cms_class_equipment`
-  ADD PRIMARY KEY (`ID`) USING BTREE;
+ALTER TABLE `cms_class_druid_circle_land`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `cms_class_generic_spellslots`
@@ -3535,6 +3446,12 @@ ALTER TABLE `cms_class_multiclass`
   ADD PRIMARY KEY (`ID`) USING BTREE;
 
 --
+-- Indexes for table `cms_class_paladin_sacred_oaths`
+--
+ALTER TABLE `cms_class_paladin_sacred_oaths`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `cms_class_ranger_hunter`
 --
 ALTER TABLE `cms_class_ranger_hunter`
@@ -3545,6 +3462,12 @@ ALTER TABLE `cms_class_ranger_hunter`
 --
 ALTER TABLE `cms_class_ranger_spellsknown`
   ADD PRIMARY KEY (`ID`) USING BTREE;
+
+--
+-- Indexes for table `cms_class_rogue_sneakattack`
+--
+ALTER TABLE `cms_class_rogue_sneakattack`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `cms_class_skills`
@@ -3620,12 +3543,6 @@ ALTER TABLE `cms_dnd_char`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `cms_dnd_epic_boons`
---
-ALTER TABLE `cms_dnd_epic_boons`
-  ADD PRIMARY KEY (`ID`) USING BTREE;
-
---
 -- Indexes for table `cms_dnd_factions`
 --
 ALTER TABLE `cms_dnd_factions`
@@ -3660,12 +3577,6 @@ ALTER TABLE `cms_dnd_trinkets`
 --
 ALTER TABLE `cms_dnd_weapons`
   ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `cms_feats`
---
-ALTER TABLE `cms_feats`
-  ADD PRIMARY KEY (`ID`) USING BTREE;
 
 --
 -- Indexes for table `cms_forum_categories`
@@ -3846,6 +3757,12 @@ ALTER TABLE `cms_class_barbarian_rage`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
+-- AUTO_INCREMENT for table `cms_class_barbarian_totems`
+--
+ALTER TABLE `cms_class_barbarian_totems`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `cms_class_bard_spellsknown`
 --
 ALTER TABLE `cms_class_bard_spellsknown`
@@ -3858,10 +3775,10 @@ ALTER TABLE `cms_class_cantrips`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `cms_class_equipment`
+-- AUTO_INCREMENT for table `cms_class_druid_circle_land`
 --
-ALTER TABLE `cms_class_equipment`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+ALTER TABLE `cms_class_druid_circle_land`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `cms_class_generic_spellslots`
@@ -3888,6 +3805,12 @@ ALTER TABLE `cms_class_multiclass`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
+-- AUTO_INCREMENT for table `cms_class_paladin_sacred_oaths`
+--
+ALTER TABLE `cms_class_paladin_sacred_oaths`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `cms_class_ranger_hunter`
 --
 ALTER TABLE `cms_class_ranger_hunter`
@@ -3897,6 +3820,12 @@ ALTER TABLE `cms_class_ranger_hunter`
 -- AUTO_INCREMENT for table `cms_class_ranger_spellsknown`
 --
 ALTER TABLE `cms_class_ranger_spellsknown`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `cms_class_rogue_sneakattack`
+--
+ALTER TABLE `cms_class_rogue_sneakattack`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
@@ -3960,12 +3889,6 @@ ALTER TABLE `cms_dnd_char`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `cms_dnd_epic_boons`
---
-ALTER TABLE `cms_dnd_epic_boons`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
 -- AUTO_INCREMENT for table `cms_dnd_factions`
 --
 ALTER TABLE `cms_dnd_factions`
@@ -4000,12 +3923,6 @@ ALTER TABLE `cms_dnd_trinkets`
 --
 ALTER TABLE `cms_dnd_weapons`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
-
---
--- AUTO_INCREMENT for table `cms_feats`
---
-ALTER TABLE `cms_feats`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `cms_forum_categories`
